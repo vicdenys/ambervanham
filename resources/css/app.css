@@ -1,0 +1,92 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+  border-bottom: solid 1px black;
+}
+
+
+@layer base {
+
+    @font-face {
+        font-family: 'Bazovy';
+        src: local('Bazovy'), url(/fonts/Bazovy.ttf) format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Victorianna-thin';
+        src: local('Victorianna-thin'), url(/fonts/Victorianna-thin.ttf) format('truetype');
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'Victorianna-thin-italic';
+        src: local('Victorianna-thin-italic'), url(/fonts/Victorianna-thin-italic.ttf) format('truetype');
+        font-display: swap;
+    }
+  }
+
+  i.fa{
+    @apply text-xs;
+  }
+
+  /* width */
+
+  .noscrollbar::-webkit-scrollbar{
+    @apply w-0 h-0;
+  }
+
+*::-webkit-scrollbar {
+    @apply w-2 border-white border h-2;
+  }
+  
+  /* Track */
+  *::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  /* Handle */
+  *::-webkit-scrollbar-thumb {
+    @apply bg-gray-500;
+  }
+  
+  /* Handle on hover */
+  *::-webkit-scrollbar-thumb:hover {
+    @apply bg-black;
+  }
+
+#menu-container{
+    will-change:  margin, color, height, padding;
+}
+#menuTopSection{
+    will-change: padding;
+}
+#menuTopSectionText{
+    will-change:  margin, color, height;
+}
+
+
+.exhibitionListItem:last-child{
+  @apply border-b-0 mb-0;
+}
+
+.exhibitionListItem:last-child p.exhibitLink{
+  @apply mb-0;
+}
+
+
+

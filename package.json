@@ -1,0 +1,30 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.4.0",
+        "alpinejs": "^3.10.2",
+        "autoprefixer": "^10.4.2",
+        "axios": "^0.25",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.6",
+        "postcss-import": "^14.0.2",
+        "tailwindcss": "^3.0.18"
+    },
+    "dependencies": {
+        "@googlemaps/js-api-loader": "^1.14.3",
+        "gsap": "^3.10.4",
+        "three": "^0.141.0",
+        "three-mtl-loader": "^1.0.2",
+        "three-obj-loader": "^1.1.3"
+    }
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="8.513mm" height="8.513mm" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.13 24.13">
+  <defs>
+    <style>
+      .g, .h {
+        fill: none;
+      }
+
+      .h {
+        stroke: #053e33;
+        stroke-width: .905px;
+      }
+
+      .i {
+        fill: #053e33;
+      }
+
+      .j {
+        opacity: .8;
+      }
+
+      .k {
+        clip-path: url(#f);
+      }
+
+      .l {
+        clip-path: url(#e);
+      }
+
+      .m {
+        clip-path: url(#d);
+      }
+    </style>
+    <clipPath id="d">
+      <rect width="24.13" height="24.13" fill="none"/>
+    </clipPath>
+    <clipPath id="e">
+      <rect y="0" width="24.13" height="24.13" fill="none"/>
+    </clipPath>
+    <clipPath id="f">
+      <rect x="-17" y="-13" width="58.13" height="38.13" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="a" data-name="Laag 1"/>
+  <g id="b" data-name="Laag 2">
+    <g id="c" data-name="Laag 1">
+      <g clip-path="#d">
+        <g clip-path="#e">
+          <g opacity=".8">
+            <g clip-path="#f">
+              <path d="M17.616,12.065c0-3.065-2.485-5.55-5.551-5.55s-5.551,2.485-5.551,5.55,2.486,5.551,5.551,5.551,5.551-2.485,5.551-5.551Zm-.039,11.613H6.553c-3.355,0-6.101-2.745-6.101-6.101V6.553C.452,3.198,3.198,.453,6.553,.453h11.024c3.355,0,6.101,2.745,6.101,6.1v11.024c0,3.356-2.746,6.101-6.101,6.101Z" fill="none" stroke="#053e33" stroke-width=".905"/>
+              <path d="M20.732,5.887c0-.874-.709-1.583-1.583-1.583s-1.582,.709-1.582,1.583,.708,1.583,1.582,1.583,1.583-.709,1.583-1.583" fill="#053e33"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
