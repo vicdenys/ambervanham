@@ -22,17 +22,17 @@ window.addEventListener('resize', (event) => {
     }
 
     // RESET SLIDER
-    console.log('test');
-    
+    [...document.querySelectorAll(".imageCarouselItem")].forEach((item, index) => {
+        console.log(parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')));
+        item.style.width = item.dataset.originalWidth = `${
+            [...document.querySelectorAll(".imageCarouselImages")][index].getBoundingClientRect().width + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')) + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-right'))
+        }px`;
+    });
 
     calculateDimensions();
     document.body.style.height = `${sliderWidth}px`;
 
-    [...document.querySelectorAll(".imageCarouselItem")].forEach((item) => {
-        item.style.width = item.dataset.originalWidth = `${
-            item.getBoundingClientRect().width
-        }px`;
-    });
+    
 });
 
 document.addEventListener("alpine:init", () => {
@@ -528,4 +528,8 @@ if (
     )
 ) {
     document.getElementById("mouse").hidden = true;
+}
+
+function convertRemToPixels(rem) {    
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }

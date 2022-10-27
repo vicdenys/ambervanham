@@ -932,6 +932,9 @@ select {
 .h-\[24rem\] {
   height: 24rem;
 }
+.h-\[22rem\] {
+  height: 22rem;
+}
 .max-h-24 {
   max-height: 6rem;
 }

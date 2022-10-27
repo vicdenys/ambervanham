@@ -5453,13 +5453,13 @@ window.addEventListener('resize', function (event) {
   } // RESET SLIDER
 
 
-  console.log('test');
+  _toConsumableArray(document.querySelectorAll(".imageCarouselItem")).forEach(function (item, index) {
+    console.log(parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')));
+    item.style.width = item.dataset.originalWidth = "".concat(_toConsumableArray(document.querySelectorAll(".imageCarouselImages"))[index].getBoundingClientRect().width + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')) + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-right')), "px");
+  });
+
   calculateDimensions();
   document.body.style.height = "".concat(sliderWidth, "px");
-
-  _toConsumableArray(document.querySelectorAll(".imageCarouselItem")).forEach(function (item) {
-    item.style.width = item.dataset.originalWidth = "".concat(item.getBoundingClientRect().width, "px");
-  });
 });
 document.addEventListener("alpine:init", function () {
   alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data("artwork", function () {
@@ -5882,6 +5882,10 @@ window.addEventListener("mousemove", moveMouse); // HIDE MouSE IF MOBILE
 
 if (/iPhone|Android/i.test(navigator.userAgent) || /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(navigator.userAgent.toLowerCase())) {
   document.getElementById("mouse").hidden = true;
+}
+
+function convertRemToPixels(rem) {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
 
 /***/ }),
