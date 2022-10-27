@@ -67,7 +67,7 @@ document.addEventListener("alpine:init", () => {
         detailTimeline: null,
         artworkTitle: "",
         artworkDescription: "",
-        artworkCategories: ['category 1'],
+        artworkCategories: ["category 1"],
         artworkDetailId: 0,
 
         toggleCategory(category) {
@@ -208,19 +208,16 @@ document.addEventListener("alpine:init", () => {
                         ">-=0.2"
                     )
                     .fromTo(
-                        "#artworkDetailBG",
+                        "#artworkDetail",
                         {
-                            opacity: 1,
+                            backgroundColor: "rgba(255, 252, 248, 1)",
                         },
                         {
-                            opacity: 0,
+                            backgroundColor: "rgba(255, 252, 248, 0)",
                             duration: 0.3,
                             ease: Power2.easeInOut,
-                            onComplete: () => {
-                                this.openDetail = false;
-                            },
                         },
-                        ">-=0.3"
+                        ">-=0.4"
                     );
             } else {
                 this.openDetail = true;
@@ -234,9 +231,13 @@ document.addEventListener("alpine:init", () => {
                     "artworkDetailImageWrapper"
                 );
                 imagewrapper.innerHTML = "";
-                let textwrapper = document.getElementById('artworkDetailTextWrapper');
+                let textwrapper = document.getElementById(
+                    "artworkDetailTextWrapper"
+                );
                 let textwrapperRect = textwrapper.getBoundingClientRect();
-                let textDescription = document.getElementById('artworkDetailDescription').getBoundingClientRect();
+                let textDescription = document
+                    .getElementById("artworkDetailDescription")
+                    .getBoundingClientRect();
 
                 let image = document.getElementById("artworkImage-" + artwork);
                 let imageRect = image.getBoundingClientRect();
@@ -261,16 +262,14 @@ document.addEventListener("alpine:init", () => {
 
                 imagewrapper.appendChild(clone);
 
-
-
                 let imageRatio =
                     parseInt(clone.style.width) / parseInt(clone.style.height);
 
-                    console.log(
-                        window
-                            .getComputedStyle(clone, null)
-                            .getPropertyValue("padding-left")
-                    );
+                console.log(
+                    window
+                        .getComputedStyle(clone, null)
+                        .getPropertyValue("padding-left")
+                );
 
                 let newImageWidth =
                     imagewrapper.getBoundingClientRect().width -
@@ -278,51 +277,49 @@ document.addEventListener("alpine:init", () => {
                         window
                             .getComputedStyle(clone, null)
                             .getPropertyValue("padding-left")
-                    ) ;
+                    );
                 console.log(imagewrapper.getBoundingClientRect());
 
                 let imageSetWidth = !isSmallScreen ? "66%" : "100%";
 
                 window.setTimeout(() => {
                     this.detailTimeline = gsap
-                    .timeline()
-                    .to("#artworkImage-" + artwork + "-clone", {
-                        top:  `${textDescription.top }px`,
-                        left: imagewrapper.getBoundingClientRect().left,
-                        height: `${newImageWidth / imageRatio}px`,
-                        width: "100%",
-                        duration: 0.4,
-                        ease: Power2.easeOut,
-                    })
-                    .fromTo(
-                        "#artworkDetail",
-                        {
-                            backgroundColor: 'rgba(255, 252, 248, 0)',
-                        },
-                        {
-                            backgroundColor: 'rgba(255, 252, 248, 1)',
-                            duration: 0.3,
-                            ease: Power2.easeInOut,
-                        },
-                        ">-=0.4"
-                    )
-                    .fromTo(
-                        ".slideUp",
-                        {
-                            opacity: 0,
-                            translateY: 30,
-                        },
-                        {
-                            opacity: 1,
-                            translateY: 0,
-                            duration: 0.3,
-                            stagger: 0.1,
-                            ease: Power2.easeInOut,
-                        }
-                    );
-                }, 100)
-
-                
+                        .timeline()
+                        .to("#artworkImage-" + artwork + "-clone", {
+                            top: `${textDescription.top}px`,
+                            left: imagewrapper.getBoundingClientRect().left,
+                            height: `${newImageWidth / imageRatio}px`,
+                            width: "100%",
+                            duration: 0.4,
+                            ease: Power2.easeOut,
+                        })
+                        .fromTo(
+                            "#artworkDetail",
+                            {
+                                backgroundColor: "rgba(255, 252, 248, 0)",
+                            },
+                            {
+                                backgroundColor: "rgba(255, 252, 248, 1)",
+                                duration: 0.3,
+                                ease: Power2.easeInOut,
+                            },
+                            ">-=0.4"
+                        )
+                        .fromTo(
+                            ".slideUp",
+                            {
+                                opacity: 0,
+                                translateY: 30,
+                            },
+                            {
+                                opacity: 1,
+                                translateY: 0,
+                                duration: 0.3,
+                                stagger: 0.1,
+                                ease: Power2.easeInOut,
+                            }
+                        );
+                }, 100);
             }
         },
 
