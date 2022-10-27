@@ -47,7 +47,7 @@
 
                 </div>
             </div>
-            <div class="w-full absolute top-0 " id="artworkDetailImageWrapper">
+            <div class="w-full absolute mb-12 top-0 mt-16" id="artworkDetailImageWrapper">
 
             </div>
 

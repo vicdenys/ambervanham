@@ -236,6 +236,7 @@ document.addEventListener("alpine:init", () => {
                 imagewrapper.innerHTML = "";
                 let textwrapper = document.getElementById('artworkDetailTextWrapper');
                 let textwrapperRect = textwrapper.getBoundingClientRect();
+                let textDescription = document.getElementById('artworkDetailDescription').getBoundingClientRect();
 
                 let image = document.getElementById("artworkImage-" + artwork);
                 let imageRect = image.getBoundingClientRect();
@@ -283,7 +284,7 @@ document.addEventListener("alpine:init", () => {
                 this.detailTimeline = gsap
                     .timeline()
                     .to("#artworkImage-" + artwork + "-clone", {
-                        top:  `${textwrapperRect.top + textwrapperRect.height}px`,
+                        top:  `${textDescription.top }px`,
                         left: imagewrapper.getBoundingClientRect().left,
                         height: `${newImageWidth / imageRatio}px`,
                         width: "100%",
