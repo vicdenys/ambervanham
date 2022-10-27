@@ -754,9 +754,6 @@ select {
 .z-20 {
   z-index: 20;
 }
-.z-\[45\] {
-  z-index: 45;
-}
 .float-right {
   float: right;
 }
@@ -925,6 +922,12 @@ select {
 }
 .h-auto {
   height: auto;
+}
+.h-96 {
+  height: 24rem;
+}
+.h-\[28rem\] {
+  height: 28rem;
 }
 .max-h-24 {
   max-height: 6rem;
@@ -2693,6 +2696,10 @@ i.fa {
 
   .sm\:hidden {
     display: none;
+  }
+
+  .sm\:h-\[34rem\] {
+    height: 34rem;
   }
 
   .sm\:w-\[30rem\] {
