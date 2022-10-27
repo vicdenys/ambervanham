@@ -5450,7 +5450,16 @@ if (window.screen.width < 768) {
 window.addEventListener('resize', function (event) {
   if (window.screen.width < 768) {
     isSmallScreen = true;
-  }
+  } // RESET SLIDER
+
+
+  console.log('test');
+  calculateDimensions();
+  document.body.style.height = "".concat(sliderWidth, "px");
+
+  _toConsumableArray(document.querySelectorAll(".imageCarouselItem")).forEach(function (item) {
+    item.style.width = item.dataset.originalWidth = "".concat(item.getBoundingClientRect().width, "px");
+  });
 });
 document.addEventListener("alpine:init", function () {
   alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data("artwork", function () {

@@ -20,6 +20,19 @@ window.addEventListener('resize', (event) => {
     if(window.screen.width < 768){
         isSmallScreen = true;
     }
+
+    // RESET SLIDER
+    console.log('test');
+    
+
+    calculateDimensions();
+    document.body.style.height = `${sliderWidth}px`;
+
+    [...document.querySelectorAll(".imageCarouselItem")].forEach((item) => {
+        item.style.width = item.dataset.originalWidth = `${
+            item.getBoundingClientRect().width
+        }px`;
+    });
 });
 
 document.addEventListener("alpine:init", () => {

@@ -929,6 +929,9 @@ select {
 .h-\[28rem\] {
   height: 28rem;
 }
+.h-\[24rem\] {
+  height: 24rem;
+}
 .max-h-24 {
   max-height: 6rem;
 }
@@ -1594,6 +1597,10 @@ select {
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 .pl-\[0\.6rem\] {
   padding-left: 0.6rem;
@@ -2749,6 +2756,11 @@ i.fa {
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
 
   .sm\:pt-0 {

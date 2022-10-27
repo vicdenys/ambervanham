@@ -55,10 +55,10 @@
     </div>
 
 
-    <div id="slider_wrap" class=" h-[28rem] sm:h-[34rem] w-screen z-20 fixed top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+    <div id="slider_wrap" class=" h-[24rem] sm:h-[34rem] w-screen z-20 fixed top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         <div id="slider" @scroll.window="scrollArtworks()" class="noscrollbar   absolute top-0 left-0  h-full items-start flex ">
             @foreach($artworks as $artwork)
-            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem {{$artwork->getCategoriesString()}}  self-start  px-8 h-full group  hover:scale-110  scale-100 transition-transform duration-500 py-32 transform overflow-hidden origin-center">
+            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem {{$artwork->getCategoriesString()}}  self-start  px-8 h-full group  hover:scale-110  scale-100 transition-transform duration-500 py-20 sm:py-32 transform overflow-hidden origin-center">
                 <div id="artworkTitle-{{$artwork->id}}-wrapper" class="absolute  top-20 left-1/2 transform -translate-x-1/2 overflow-hidden">
                     <p id="artworkTitle-{{$artwork->id}}" class=" text-sm block relative font-sans py-1">
 
