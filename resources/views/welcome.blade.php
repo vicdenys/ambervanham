@@ -25,12 +25,10 @@
 
     </div>
 
-    <div id="artworkDetail" class="fixed z-50 gap-12 bg-white   w-screen h-screen overflow-y-scroll top-0 left-0" :class="openDetail ? 'block' : 'hidden'">
+    <div id="artworkDetail" class="fixed z-50 gap-12   w-screen h-screen overflow-y-scroll top-0 left-0" :class="openDetail ? 'block' : 'hidden'">
         <p class="text-center relative z-50 mt-12" @click="imageClicked()">
             x close
         </p>
-        <div id="artworkDetailBG" class="bg-white z-0 opacity-0 absolute w-full h-full top-0 left-0"></div>
-
         <div class="flex flex-wrap z-50   absolute w-full relaltive " id="artworkDetailTextWrapper">
             <div class="w-full  px-12 py-8"  >
                 <h1 class="slideUp opacity-0 text-3xl" id="artworkDetailtitle" x-text="artworkTitle">
@@ -47,7 +45,7 @@
 
                 </div>
             </div>
-            <div class="w-full absolute mb-12 top-0 mt-16" id="artworkDetailImageWrapper">
+            <div class="w-full absolute mb-12 top-0 " id="artworkDetailImageWrapper">
 
             </div>
 

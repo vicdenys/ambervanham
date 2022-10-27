@@ -67,7 +67,7 @@ document.addEventListener("alpine:init", () => {
         detailTimeline: null,
         artworkTitle: "",
         artworkDescription: "",
-        artworkCategories: [],
+        artworkCategories: ['category 1'],
         artworkDetailId: 0,
 
         toggleCategory(category) {
@@ -261,6 +261,8 @@ document.addEventListener("alpine:init", () => {
 
                 imagewrapper.appendChild(clone);
 
+
+
                 let imageRatio =
                     parseInt(clone.style.width) / parseInt(clone.style.height);
 
@@ -281,7 +283,8 @@ document.addEventListener("alpine:init", () => {
 
                 let imageSetWidth = !isSmallScreen ? "66%" : "100%";
 
-                this.detailTimeline = gsap
+                window.setTimeout(() => {
+                    this.detailTimeline = gsap
                     .timeline()
                     .to("#artworkImage-" + artwork + "-clone", {
                         top:  `${textDescription.top }px`,
@@ -292,16 +295,16 @@ document.addEventListener("alpine:init", () => {
                         ease: Power2.easeOut,
                     })
                     .fromTo(
-                        "#artworkDetailBG",
+                        "#artworkDetail",
                         {
-                            opacity: 0,
+                            backgroundColor: 'rgba(255, 252, 248, 0)',
                         },
                         {
-                            opacity: 1,
+                            backgroundColor: 'rgba(255, 252, 248, 1)',
                             duration: 0.3,
                             ease: Power2.easeInOut,
                         },
-                        ">-=0.5"
+                        ">-=0.4"
                     )
                     .fromTo(
                         ".slideUp",
@@ -317,6 +320,9 @@ document.addEventListener("alpine:init", () => {
                             ease: Power2.easeInOut,
                         }
                     );
+                }, 100)
+
+                
             }
         },
 
