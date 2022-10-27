@@ -26,7 +26,7 @@
 </head>
 
 
-<body class="antialiased cursor-none noscrollbar bg-gradient-to-b from-white to-[#FFF]">
+<body class="antialiased cursor-none noscrollbar bg-white">
 
         <div class=" h-full font-bazovy" @resize.window="menuOpen = false">
             @include('layouts.navigation-guest', ['isDarkTheme' => isset($isDarkTheme), 'isAboutNav' => false])

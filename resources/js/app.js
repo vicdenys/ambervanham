@@ -13,26 +13,44 @@ gsap.registerPlugin(ScrollTrigger);
 window.Alpine = Alpine;
 
 let isSmallScreen = false;
-if(window.screen.width < 768){
+if (window.screen.width < 768) {
     isSmallScreen = true;
 }
-window.addEventListener('resize', (event) => {
-    if(window.screen.width < 768){
+window.addEventListener("resize", (event) => {
+    if (window.screen.width < 768) {
         isSmallScreen = true;
     }
 
     // RESET SLIDER
-    [...document.querySelectorAll(".imageCarouselItem")].forEach((item, index) => {
-        console.log(parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')));
-        item.style.width = item.dataset.originalWidth = `${
-            [...document.querySelectorAll(".imageCarouselImages")][index].getBoundingClientRect().width + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')) + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-right'))
-        }px`;
-    });
+    [...document.querySelectorAll(".imageCarouselItem")].forEach(
+        (item, index) => {
+            console.log(
+                parseInt(
+                    window
+                        .getComputedStyle(item, null)
+                        .getPropertyValue("padding-left")
+                )
+            );
+            item.style.width = item.dataset.originalWidth = `${
+                [...document.querySelectorAll(".imageCarouselImages")][
+                    index
+                ].getBoundingClientRect().width +
+                parseInt(
+                    window
+                        .getComputedStyle(item, null)
+                        .getPropertyValue("padding-left")
+                ) +
+                parseInt(
+                    window
+                        .getComputedStyle(item, null)
+                        .getPropertyValue("padding-right")
+                )
+            }px`;
+        }
+    );
 
     calculateDimensions();
     document.body.style.height = `${sliderWidth}px`;
-
-    
 });
 
 document.addEventListener("alpine:init", () => {
@@ -154,11 +172,12 @@ document.addEventListener("alpine:init", () => {
 
         imageClicked(artwork) {
             if (this.openDetail) {
-
                 if (this.detailTimeline) {
                     this.detailTimeline.kill();
                 }
-                let imageRect = document.getElementById("artworkImage-" +  this.artworkDetailId).getBoundingClientRect()
+                let imageRect = document
+                    .getElementById("artworkImage-" + this.artworkDetailId)
+                    .getBoundingClientRect();
 
                 this.detailTimeline = gsap
                     .timeline()
@@ -175,15 +194,19 @@ document.addEventListener("alpine:init", () => {
                             ease: Power2.easeInOut,
                         }
                     )
-                    .to("#artworkImage-" + this.artworkDetailId + "-clone", {
-                        top: `calc(${imageRect.top}px - 4.5rem)`,
-                        left: imageRect.left,
-                        width: imageRect.width,
-                        padding: 0,
-                        duration: 0.3,
-                        ease: Power2.easeOut,
-                    },
-                    ">-=0.2")
+                    .to(
+                        "#artworkImage-" + this.artworkDetailId + "-clone",
+                        {
+                            top: `calc(${imageRect.top}px - 8.5rem)`,
+                            left: imageRect.left,
+                            width: imageRect.width,
+                            height: imageRect.height,
+                            padding: 0,
+                            duration: 0.3,
+                            ease: Power2.easeOut,
+                        },
+                        ">-=0.2"
+                    )
                     .fromTo(
                         "#artworkDetailBG",
                         {
@@ -193,12 +216,11 @@ document.addEventListener("alpine:init", () => {
                             opacity: 0,
                             duration: 0.3,
                             ease: Power2.easeInOut,
-                            onComplete: () =>{
+                            onComplete: () => {
                                 this.openDetail = false;
-                            }
+                            },
                         },
                         ">-=0.3"
-                    
                     );
             } else {
                 this.openDetail = true;
@@ -212,6 +234,8 @@ document.addEventListener("alpine:init", () => {
                     "artworkDetailImageWrapper"
                 );
                 imagewrapper.innerHTML = "";
+                let textwrapper = document.getElementById('artworkDetailTextWrapper');
+                let textwrapperRect = textwrapper.getBoundingClientRect();
 
                 let image = document.getElementById("artworkImage-" + artwork);
                 let imageRect = image.getBoundingClientRect();
@@ -226,24 +250,43 @@ document.addEventListener("alpine:init", () => {
                     .getElementById("artworkImage-" + artwork)
                     .cloneNode();
                 clone.removeAttribute("class");
-                clone.classList.add("absolute", "p-12");
+                clone.classList.add("absolute", "px-12", "pb-12");
                 clone.id = "artworkImage-" + artwork + "-clone";
 
                 clone.style.width = imageRect.width + "px";
-                clone.style.height = "auto";
+                clone.style.height = imageRect.height + "px";
                 clone.style.left = imageRect.left + "px";
-                clone.style.top = imageRect.top + "px";
+                clone.style.top = `calc(${imageRect.top}px - 8.5rem)`;
 
                 imagewrapper.appendChild(clone);
 
-                let imageSetWidth = !isSmallScreen ? "66%" : "100%" ;
+                let imageRatio =
+                    parseInt(clone.style.width) / parseInt(clone.style.height);
+
+                    console.log(
+                        window
+                            .getComputedStyle(clone, null)
+                            .getPropertyValue("padding-left")
+                    );
+
+                let newImageWidth =
+                    imagewrapper.getBoundingClientRect().width -
+                    parseInt(
+                        window
+                            .getComputedStyle(clone, null)
+                            .getPropertyValue("padding-left")
+                    ) ;
+                console.log(imagewrapper.getBoundingClientRect());
+
+                let imageSetWidth = !isSmallScreen ? "66%" : "100%";
 
                 this.detailTimeline = gsap
                     .timeline()
                     .to("#artworkImage-" + artwork + "-clone", {
-                        top: 0,
-                        left: 0,
-                        height: '100%',
+                        top:  `${textwrapperRect.top + textwrapperRect.height}px`,
+                        left: imagewrapper.getBoundingClientRect().left,
+                        height: `${newImageWidth / imageRatio}px`,
+                        width: "100%",
                         duration: 0.4,
                         ease: Power2.easeOut,
                     })
@@ -301,7 +344,7 @@ document.addEventListener("alpine:init", () => {
                         duration: 0.2,
                         ease: Power2.easeOut,
                         stagger: 0.05,
-                    },
+                    }
                 );
         },
         removeArtworkTitle(artwork) {
@@ -403,7 +446,7 @@ function scrollUpdate() {
     }
 
     slider.style.transform = `translateX(${-window.scrollY}px)`;
-    
+
     progressbarTip.style.left = `${
         (window.scrollY / (sliderWidth / 2)) * 100
     }%`;
@@ -530,6 +573,8 @@ if (
     document.getElementById("mouse").hidden = true;
 }
 
-function convertRemToPixels(rem) {    
-    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+function convertRemToPixels(rem) {
+    return (
+        rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+    );
 }

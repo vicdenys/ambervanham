@@ -724,6 +724,12 @@ select {
 .-left-\[calc\(200\%\+6px\)\] {
   left: calc(calc(200% + 6px) * -1);
 }
+.top-1\/4 {
+  top: 25%;
+}
+.top-\[15\%\] {
+  top: 15%;
+}
 .z-0 {
   z-index: 0;
 }
@@ -839,6 +845,12 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.-mt-12 {
+  margin-top: -3rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
 .box-content {
   box-sizing: content-box;
 }
@@ -934,6 +946,24 @@ select {
 }
 .h-\[22rem\] {
   height: 22rem;
+}
+.h-1\/3 {
+  height: 33.333333%;
+}
+.h-\[33vh\] {
+  height: 33vh;
+}
+.h-2\/3 {
+  height: 66.666667%;
+}
+.h-\[66vh\] {
+  height: 66vh;
+}
+.h-\[120vh\] {
+  height: 120vh;
+}
+.h-\[45vh\] {
+  height: 45vh;
 }
 .max-h-24 {
   max-height: 6rem;
@@ -1079,6 +1109,14 @@ select {
 }
 .-translate-y-\[100px\] {
   --tw-translate-y: -100px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.-translate-y-\[80\%\] {
+  --tw-translate-y: -80%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-y-\[-80\%\] {
+  --tw-translate-y: -80%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .scale-95 {
@@ -1290,6 +1328,15 @@ select {
 }
 .overflow-visible {
   overflow: visible;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.overflow-y-hidden {
+  overflow-y: hidden;
 }
 .overflow-y-scroll {
   overflow-y: scroll;
@@ -1605,6 +1652,14 @@ select {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+.py-\[3vh\] {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
 .pl-\[0\.6rem\] {
   padding-left: 0.6rem;
 }
@@ -1625,6 +1680,9 @@ select {
 }
 .pr-4 {
   padding-right: 1rem;
+}
+.pb-12 {
+  padding-bottom: 3rem;
 }
 .text-left {
   text-align: left;

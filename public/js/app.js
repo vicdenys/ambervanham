@@ -5447,15 +5447,15 @@ if (window.screen.width < 768) {
   isSmallScreen = true;
 }
 
-window.addEventListener('resize', function (event) {
+window.addEventListener("resize", function (event) {
   if (window.screen.width < 768) {
     isSmallScreen = true;
   } // RESET SLIDER
 
 
   _toConsumableArray(document.querySelectorAll(".imageCarouselItem")).forEach(function (item, index) {
-    console.log(parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')));
-    item.style.width = item.dataset.originalWidth = "".concat(_toConsumableArray(document.querySelectorAll(".imageCarouselImages"))[index].getBoundingClientRect().width + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-left')) + parseInt(window.getComputedStyle(item, null).getPropertyValue('padding-right')), "px");
+    console.log(parseInt(window.getComputedStyle(item, null).getPropertyValue("padding-left")));
+    item.style.width = item.dataset.originalWidth = "".concat(_toConsumableArray(document.querySelectorAll(".imageCarouselImages"))[index].getBoundingClientRect().width + parseInt(window.getComputedStyle(item, null).getPropertyValue("padding-left")) + parseInt(window.getComputedStyle(item, null).getPropertyValue("padding-right")), "px");
   });
 
   calculateDimensions();
@@ -5598,9 +5598,10 @@ document.addEventListener("alpine:init", function () {
             duration: 0.3,
             ease: gsap__WEBPACK_IMPORTED_MODULE_6__.Power2.easeInOut
           }).to("#artworkImage-" + this.artworkDetailId + "-clone", {
-            top: "calc(".concat(imageRect.top, "px - 4.5rem)"),
+            top: "calc(".concat(imageRect.top, "px - 8.5rem)"),
             left: imageRect.left,
             width: imageRect.width,
+            height: imageRect.height,
             padding: 0,
             duration: 0.3,
             ease: gsap__WEBPACK_IMPORTED_MODULE_6__.Power2.easeOut
@@ -5621,6 +5622,8 @@ document.addEventListener("alpine:init", function () {
 
           var imagewrapper = document.getElementById("artworkDetailImageWrapper");
           imagewrapper.innerHTML = "";
+          var textwrapper = document.getElementById('artworkDetailTextWrapper');
+          var textwrapperRect = textwrapper.getBoundingClientRect();
           var image = document.getElementById("artworkImage-" + artwork);
 
           var _imageRect = image.getBoundingClientRect(); // change title description and categories
@@ -5631,18 +5634,23 @@ document.addEventListener("alpine:init", function () {
           this.artworkCategories = image.dataset.artworkCategories.split("-");
           var clone = document.getElementById("artworkImage-" + artwork).cloneNode();
           clone.removeAttribute("class");
-          clone.classList.add("absolute", "p-12");
+          clone.classList.add("absolute", "px-12", "pb-12");
           clone.id = "artworkImage-" + artwork + "-clone";
           clone.style.width = _imageRect.width + "px";
-          clone.style.height = "auto";
+          clone.style.height = _imageRect.height + "px";
           clone.style.left = _imageRect.left + "px";
-          clone.style.top = _imageRect.top + "px";
+          clone.style.top = "calc(".concat(_imageRect.top, "px - 8.5rem)");
           imagewrapper.appendChild(clone);
+          var imageRatio = parseInt(clone.style.width) / parseInt(clone.style.height);
+          console.log(window.getComputedStyle(clone, null).getPropertyValue("padding-left"));
+          var newImageWidth = imagewrapper.getBoundingClientRect().width - parseInt(window.getComputedStyle(clone, null).getPropertyValue("padding-left"));
+          console.log(imagewrapper.getBoundingClientRect());
           var imageSetWidth = !isSmallScreen ? "66%" : "100%";
           this.detailTimeline = gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.timeline().to("#artworkImage-" + artwork + "-clone", {
-            top: 0,
-            left: 0,
-            height: '100%',
+            top: "".concat(textwrapperRect.top + textwrapperRect.height, "px"),
+            left: imagewrapper.getBoundingClientRect().left,
+            height: "".concat(newImageWidth / imageRatio, "px"),
+            width: "100%",
             duration: 0.4,
             ease: gsap__WEBPACK_IMPORTED_MODULE_6__.Power2.easeOut
           }).fromTo("#artworkDetailBG", {
