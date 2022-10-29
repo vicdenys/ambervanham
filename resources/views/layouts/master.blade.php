@@ -9,7 +9,7 @@
 
 
     <title>
-        Amber van Ham - 
+        Amber van Ham 
         @isset($title)
             {{ $title }} 
         @endisset

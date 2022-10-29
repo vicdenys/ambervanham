@@ -1,4 +1,4 @@
-@extends('layouts.master' , ['isDarkTheme' => 'true', 'title' => 'Home'])
+@extends('layouts.master' , ['isDarkTheme' => 'true', 'title' => ''])
 
 @section('content')
 <div x-data="artwork" class="h-full w-full absolute top-0 left-0">
