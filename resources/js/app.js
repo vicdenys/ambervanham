@@ -13,13 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 window.Alpine = Alpine;
 
 let isSmallScreen = false;
-if (window.screen.width < 768) {
-    isSmallScreen = true;
-}
+
 window.addEventListener("resize", (event) => {
-    if (window.screen.width < 768) {
-        isSmallScreen = true;
-    }
 
     // RESET SLIDER
     [...document.querySelectorAll(".imageCarouselItem")].forEach(
@@ -520,7 +515,13 @@ Promise.all(
                 })
         )
 ).then(() => {
-    onload();
+    console.log(window.screen.width);
+    if (window.screen.width < 768) {
+        isSmallScreen = true;
+    } else {
+        isSmallScreen = false;
+        onload();
+    }
 });
 
 // MOUSE ACTION

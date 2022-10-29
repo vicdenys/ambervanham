@@ -78,8 +78,8 @@
   </x-bottom-module>
   <x-bottom-module :title="'Contact'" :class="' -mr-[5px]'" :slotClass="'-left-[calc(200%+6px)]'">
     <div class="  p-4 sm:p-8">
-      <a data-hover target="_blank" class="block font-sans uppercase cursor-none  text-sm sm:text-base" href="https://www.instagram.com/amber_vanham/">instagram</a>
-      <a data-hover target="_blank" class="block font-sans uppercase cursor-none  text-sm sm:text-base" href="mailto:vanhamamber@gmail.com">mail</a>
+      <a data-hover target="_blank" class="block font-sans uppercase cursor-none  sm:text-base" href="https://www.instagram.com/amber_vanham/">instagram</a>
+      <a data-hover target="_blank" class="block font-sans uppercase cursor-none mt-1 sm:text-base" href="mailto:vanhamamber@gmail.com">mail</a>
     </div>
   </x-bottom-module>
 
