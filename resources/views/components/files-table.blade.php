@@ -113,7 +113,6 @@
                         <td class="py-6 hidden lg:table-cell">
                             <div class="flex gap-6 max-w-[12rem]">
 
-                            {{ var_dump(nl2br($file->description)) }}
                                 <p class="w-full text-ellipsis max-h-12  font-light overflow-hidden whitespace-pre-line">{{ $file->description }}</p>
                             </div>
 
