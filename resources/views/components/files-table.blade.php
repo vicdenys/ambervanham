@@ -65,12 +65,12 @@
                                     <img id="artwork-image-{{$file->id}}" class=" w-64 my-4" src="{{ $file->image ? '/artwork-files/' . $file->image : 'img/default.jpeg' }}" alt="image of {{ $file->title }}">
 
                                 </div>
-                                <p class="font-light">{{ $file->description }}</p>
+                                <p class="font-light whitespace-pre-line" id="artworkDescription-{{$file->id}}">{{ $file->description }}</p>
 
 
                                 <div class="flex gap-4 mt-4">
                                     <div x-data="{openDeleteModal : false}">
-                                        <x-button @click="updateArtwork('{{$file->title}}', '{{$file->description}}', {{json_encode($file->categories->all())}}, '{{$file->id}}')" color='white' negative-color='black' class=" text-base ">
+                                        <x-button @click="updateArtwork('{{$file->title}}', {{json_encode($file->categories->all())}}, '{{$file->id}}')" color='white' negative-color='black' class=" text-base ">
                                             {{ __('update') }}
                                         </x-button>
                                         <x-button @click="openDeleteModal = true" color='white' negative-color='red-600' class="text-base ">
@@ -112,7 +112,9 @@
                         </th>
                         <td class="py-6 hidden lg:table-cell">
                             <div class="flex gap-6 max-w-[12rem]">
-                                <p class="w-full text-ellipsis max-h-12  font-light overflow-hidden">{{ $file->description }}</p>
+
+                            {{ var_dump(nl2br($file->description)) }}
+                                <p class="w-full text-ellipsis max-h-12  font-light overflow-hidden whitespace-pre-line">{{ $file->description }}</p>
                             </div>
 
                         </td>
@@ -123,7 +125,7 @@
                             @endforelse
                         </td>
                         <td class="py-6 text-right hidden lg:table-cell" x-data="{ openUpdateModal: false}">
-                            <x-button @click="updateArtwork('{{$file->title}}', '{{$file->description}}', {{json_encode($file->categories->all())}}, '{{$file->id}}')" color='white' negative-color='black' class="ml-3 text-base ">
+                            <x-button @click="updateArtwork('{{$file->title}}', {{json_encode($file->categories->all())}}, '{{$file->id}}')" color='white' negative-color='black' class="ml-3 text-base ">
                                 {{ __('update') }}
                             </x-button>
 

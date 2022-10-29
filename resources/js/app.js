@@ -24,13 +24,6 @@ window.addEventListener("resize", (event) => {
     // RESET SLIDER
     [...document.querySelectorAll(".imageCarouselItem")].forEach(
         (item, index) => {
-            console.log(
-                parseInt(
-                    window
-                        .getComputedStyle(item, null)
-                        .getPropertyValue("padding-left")
-                )
-            );
             item.style.width = item.dataset.originalWidth = `${
                 [...document.querySelectorAll(".imageCarouselImages")][
                     index
@@ -65,9 +58,18 @@ document.addEventListener("alpine:init", () => {
         isScrolling: false,
         openDetail: false,
         detailTimeline: null,
-        artworkTitle: "",
-        artworkDescription: "",
-        artworkCategories: ['category 1'],
+        artworkTitle: "This is a artwork title",
+        artworkDescription: "this is a artwork description",
+        artworkCategories: [
+            "category 1",
+            "category 1",
+            "category 1",
+            "category 1",
+            "category 1",
+            "category 1",
+            "category 1",
+            "category 1",
+        ],
         artworkDetailId: 0,
 
         toggleCategory(category) {
@@ -197,7 +199,7 @@ document.addEventListener("alpine:init", () => {
                     .to(
                         "#artworkImage-" + this.artworkDetailId + "-clone",
                         {
-                            top: `calc(${imageRect.top}px - 8.5rem)`,
+                            top: `calc(${imageRect.top}px - 4.5rem)`,
                             left: imageRect.left,
                             width: imageRect.width,
                             height: imageRect.height,
@@ -210,29 +212,16 @@ document.addEventListener("alpine:init", () => {
                     .fromTo(
                         "#artworkDetail",
                         {
-                            backgroundColor: 'rgba(255, 252, 248, 1)',
+                            backgroundColor: "rgba(255, 252, 248, 1)",
                         },
                         {
-                            backgroundColor: 'rgba(255, 252, 248, 0)',
-                            duration: 0.3,
-                            ease: Power2.easeInOut,
-                        },
-                        ">-=0.3"
-                    )
-                    .fromTo(
-                        "#artworkDetailBG",
-                        {
-                            opacity: 1,
-                        },
-                        {
-                            opacity: 0,
+                            backgroundColor: "rgba(255, 252, 248, 0)",
                             duration: 0.3,
                             ease: Power2.easeInOut,
                             onComplete: () => {
                                 this.openDetail = false;
                             },
-                        },
-                        ">-=0.3"
+                        }
                     );
             } else {
                 this.openDetail = true;
@@ -246,14 +235,14 @@ document.addEventListener("alpine:init", () => {
                     "artworkDetailImageWrapper"
                 );
                 imagewrapper.innerHTML = "";
-                let textwrapper = document.getElementById('artworkDetailTextWrapper');
-                let textwrapperRect = textwrapper.getBoundingClientRect();
-                let textDescription = document.getElementById('artworkDetailDescription').getBoundingClientRect();
+                let textwrapper = document.getElementById(
+                    "artworkDetailTextWrapper"
+                );
 
                 let image = document.getElementById("artworkImage-" + artwork);
                 let imageRect = image.getBoundingClientRect();
 
-                // change title description and categories
+                //change title description and categories
                 this.artworkTitle = image.dataset.artworkTitle;
                 this.artworkDescription = image.dataset.artworkDescription;
                 this.artworkCategories =
@@ -263,26 +252,18 @@ document.addEventListener("alpine:init", () => {
                     .getElementById("artworkImage-" + artwork)
                     .cloneNode();
                 clone.removeAttribute("class");
-                clone.classList.add("absolute", "px-12", "pb-12");
+                clone.classList.add("absolute");
                 clone.id = "artworkImage-" + artwork + "-clone";
 
                 clone.style.width = imageRect.width + "px";
                 clone.style.height = imageRect.height + "px";
                 clone.style.left = imageRect.left + "px";
-                clone.style.top = `calc(${imageRect.top}px - 8.5rem)`;
+                clone.style.top = `calc(${imageRect.top}px - 4.5rem)`;
 
                 imagewrapper.appendChild(clone);
 
-
-
                 let imageRatio =
                     parseInt(clone.style.width) / parseInt(clone.style.height);
-
-                    console.log(
-                        window
-                            .getComputedStyle(clone, null)
-                            .getPropertyValue("padding-left")
-                    );
 
                 let newImageWidth =
                     imagewrapper.getBoundingClientRect().width -
@@ -290,51 +271,52 @@ document.addEventListener("alpine:init", () => {
                         window
                             .getComputedStyle(clone, null)
                             .getPropertyValue("padding-left")
-                    ) ;
-                console.log(imagewrapper.getBoundingClientRect());
+                    );
 
                 let imageSetWidth = !isSmallScreen ? "66%" : "100%";
 
                 window.setTimeout(() => {
+                    let textwrapperRect = textwrapper.getBoundingClientRect();
+                    
                     this.detailTimeline = gsap
-                    .timeline()
-                    .to("#artworkImage-" + artwork + "-clone", {
-                        top:  `${textDescription.top }px`,
-                        left: imagewrapper.getBoundingClientRect().left,
-                        height: `${newImageWidth / imageRatio}px`,
-                        width: "100%",
-                        duration: 0.4,
-                        ease: Power2.easeOut,
-                    })
-                    .fromTo(
-                        "#artworkDetail",
-                        {
-                            backgroundColor: 'rgba(255, 252, 248, 0)',
-                        },
-                        {
-                            backgroundColor: 'rgba(255, 252, 248, 1)',
-                            duration: 0.3,
-                            ease: Power2.easeInOut,
-                        },
-                        ">-=0.4"
-                    )
-                    .fromTo(
-                        ".slideUp",
-                        {
-                            opacity: 0,
-                            translateY: 30,
-                        },
-                        {
-                            opacity: 1,
-                            translateY: 0,
-                            duration: 0.3,
-                            stagger: 0.1,
-                            ease: Power2.easeInOut,
-                        }
-                    );
-                }, 100)
-
-                
+                        .timeline()
+                        .fromTo(
+                            "#artworkDetail",
+                            {
+                                backgroundColor: "rgba(255, 252, 248, 0)",
+                            },
+                            {
+                                backgroundColor: "rgba(255, 252, 248, 1)",
+                                duration: 0.2,
+                                ease: Power2.easeInOut,
+                            }
+                        )
+                        .to("#artworkImage-" + artwork + "-clone", {
+                            top: `calc(${
+                                textwrapperRect.top + textwrapperRect.height
+                            }px - 4.5rem)`,
+                            left: imagewrapper.getBoundingClientRect().left,
+                            height: `${newImageWidth / imageRatio}px`,
+                            padding: "0 3rem 3rem 3rem",
+                            width: "100%",
+                            duration: 0.4,
+                            ease: Power2.easeOut,
+                        })
+                        .fromTo(
+                            ".slideUp",
+                            {
+                                opacity: 0,
+                                translateY: 30,
+                            },
+                            {
+                                opacity: 1,
+                                translateY: 0,
+                                duration: 0.3,
+                                stagger: 0.1,
+                                ease: Power2.easeInOut,
+                            }
+                        );
+                }, 100);
             }
         },
 

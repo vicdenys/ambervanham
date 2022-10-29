@@ -40,7 +40,7 @@
                     </template>
                 </div>
                 <div class="mt-4 slideUp opacity-0">
-                    <p id="artworkDetailDescription" x-text="artworkDescription">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, tempora aspernatur. Tempora quo quia laborum officiis.</p>
+                    <p id="artworkDetailDescription" x-text="artworkDescription" class="whitespace-pre-line">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, tempora aspernatur. Tempora quo quia laborum officiis.</p>
 
 
                 </div>

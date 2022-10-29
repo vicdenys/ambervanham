@@ -72,13 +72,13 @@
                     let formURL = document.getElementById('artworkUploadForm').setAttribute('action',  document.getElementById('artworkUploadForm').getAttribute('action').replace(/\/[^\/]*$/, '/upload-artwork'));
                     console.log(formURL)
                 },
-                updateArtwork(title, description, categories, artworkId) {
+                updateArtwork(title, categories, artworkId) {
                     this.artworkId = artworkId;
                     this.open = true;
                     this.isEditing = true;
                     document.getElementById('FileUploadInput').required = false;
                     this.formData.title = title;
-                    this.formData.description = description;
+                    this.formData.description = document.getElementById(`artworkDescription-${artworkId}`).innerHTML;
                     this.imageUrl = document.getElementById('artwork-image-' + this.artworkId).src;
                     this.getImageFile(this.artworkId);
 
