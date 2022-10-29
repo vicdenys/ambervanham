@@ -48,9 +48,9 @@ window.addEventListener("resize", (event) => {
     // reset artworkdetailimage
     let artworkImageClone = document.getElementById("artworkImage-clone");
     if (artworkImageClone) {
-        let textwrapperRect = document.getElementById(
-            "artworkDetailTextWrapper"
-        ).getBoundingClientRect();
+        let textwrapperRect = document
+            .getElementById("artworkDetailTextWrapper")
+            .getBoundingClientRect();
         artworkImageClone.style.top = `calc(${
             textwrapperRect.top + textwrapperRect.height
         }px - 4.5rem)`;
@@ -262,6 +262,11 @@ document.addEventListener("alpine:init", () => {
                 this.artworkDescription = image.dataset.artworkDescription;
                 this.artworkCategories =
                     image.dataset.artworkCategories.split("-");
+                this.artworkCategories.forEach((item, index) => {
+                    if (item == ''){
+                        this.artworkCategories = []
+                    }
+                })
 
                 let clone = document
                     .getElementById("artworkImage-" + artwork)

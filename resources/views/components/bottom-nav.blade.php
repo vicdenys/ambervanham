@@ -7,8 +7,7 @@
 
       </span>
       <span class="mt-4 inline-block">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-
+        <img src="./img/amber-profile.png" alt="profile picture amber van ham">
       </span>
       <span class="mt-4 inline-block">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
@@ -78,12 +77,10 @@
 
   </x-bottom-module>
   <x-bottom-module :title="'Contact'" :class="' -mr-[5px]'" :slotClass="'-left-[calc(200%+6px)]'">
-    <p class="  p-4 sm:p-8">
-      <span>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-
-      </span>
-    </p>
+    <div class="  p-4 sm:p-8">
+      <a data-hover target="_blank" class="block font-sans uppercase cursor-none  text-sm sm:text-base" href="https://www.instagram.com/amber_vanham/">instagram</a>
+      <a data-hover target="_blank" class="block font-sans uppercase cursor-none  text-sm sm:text-base" href="mailto:vanhamamber@gmail.com">mail</a>
+    </div>
   </x-bottom-module>
 
 
