@@ -44,6 +44,21 @@ window.addEventListener("resize", (event) => {
 
     calculateDimensions();
     document.body.style.height = `${sliderWidth}px`;
+
+    // reset artworkdetailimage
+    let artworkImageClone = document.getElementById("artworkImage-clone");
+    if (artworkImageClone) {
+        let textwrapperRect = document.getElementById(
+            "artworkDetailTextWrapper"
+        ).getBoundingClientRect();
+        artworkImageClone.style.top = `calc(${
+            textwrapperRect.top + textwrapperRect.height
+        }px - 4.5rem)`;
+        artworkImageClone.style.height = `${
+            artworkImageClone.getBoundingClientRect().width /
+            artworkImageClone.dataset.imageRatio
+        }px`;
+    }
 });
 
 document.addEventListener("alpine:init", () => {
@@ -197,7 +212,7 @@ document.addEventListener("alpine:init", () => {
                         }
                     )
                     .to(
-                        "#artworkImage-" + this.artworkDetailId + "-clone",
+                        "#artworkImage-clone",
                         {
                             top: `calc(${imageRect.top}px - 4.5rem)`,
                             left: imageRect.left,
@@ -253,7 +268,7 @@ document.addEventListener("alpine:init", () => {
                     .cloneNode();
                 clone.removeAttribute("class");
                 clone.classList.add("absolute");
-                clone.id = "artworkImage-" + artwork + "-clone";
+                clone.id = "artworkImage-clone";
 
                 clone.style.width = imageRect.width + "px";
                 clone.style.height = imageRect.height + "px";
@@ -264,6 +279,8 @@ document.addEventListener("alpine:init", () => {
 
                 let imageRatio =
                     parseInt(clone.style.width) / parseInt(clone.style.height);
+
+                clone.dataset.imageRatio = imageRatio;
 
                 let newImageWidth =
                     imagewrapper.getBoundingClientRect().width -
@@ -277,7 +294,7 @@ document.addEventListener("alpine:init", () => {
 
                 window.setTimeout(() => {
                     let textwrapperRect = textwrapper.getBoundingClientRect();
-                    
+
                     this.detailTimeline = gsap
                         .timeline()
                         .fromTo(
@@ -291,7 +308,7 @@ document.addEventListener("alpine:init", () => {
                                 ease: Power2.easeInOut,
                             }
                         )
-                        .to("#artworkImage-" + artwork + "-clone", {
+                        .to("#artworkImage-clone", {
                             top: `calc(${
                                 textwrapperRect.top + textwrapperRect.height
                             }px - 4.5rem)`,
