@@ -15,29 +15,43 @@ window.Alpine = Alpine;
 let isSmallScreen = false;
 
 window.addEventListener("resize", (event) => {
-    // RESET SLIDER
-    [...document.querySelectorAll(".imageCarouselItem")].forEach(
-        (item, index) => {
-            item.style.width = item.dataset.originalWidth = `${
-                [...document.querySelectorAll(".imageCarouselImages")][
-                    index
-                ].getBoundingClientRect().width +
-                parseInt(
-                    window
-                        .getComputedStyle(item, null)
-                        .getPropertyValue("padding-left")
-                ) +
-                parseInt(
-                    window
-                        .getComputedStyle(item, null)
-                        .getPropertyValue("padding-right")
-                )
-            }px`;
-        }
-    );
+    if (window.screen.width < 768 && !isSmallScreen) {
+        // first time small screen
+        isSmallScreen = true;
+        toSmall();
+    } else if (window.screen.width >= 768 && isSmallScreen) {
+        // first time big screen
+        isSmallScreen = false;
+        toBig()
+    }
 
-    calculateDimensions();
-    document.body.style.height = `${sliderWidth}px`;
+    if (isSmallScreen) {
+
+    } else {
+        // RESET SLIDER
+        [...document.querySelectorAll(".imageCarouselItem")].forEach(
+            (item, index) => {
+                item.style.width = item.dataset.originalWidth = `${
+                    [...document.querySelectorAll(".imageCarouselImages")][
+                        index
+                    ].getBoundingClientRect().width +
+                    parseInt(
+                        window
+                            .getComputedStyle(item, null)
+                            .getPropertyValue("padding-left")
+                    ) +
+                    parseInt(
+                        window
+                            .getComputedStyle(item, null)
+                            .getPropertyValue("padding-right")
+                    )
+                }px`;
+            }
+        );
+
+        calculateDimensions();
+        document.body.style.height = `${sliderWidth}px`;
+    }
 
     // reset artworkdetailimage
     let artworkImageClone = document.getElementById("artworkImage-clone");
@@ -175,10 +189,17 @@ document.addEventListener("alpine:init", () => {
 
             if (isSmallScreen) {
                 this.progressbarTip.style.left = `${
-                    (this.slider.scrollLeft / (this.getSliderWidth()-this.slider.offsetWidth)) * 100
+                    (this.slider.scrollLeft /
+                        (this.getSliderWidth() - this.slider.offsetWidth)) *
+                    100
                 }%`;
-
             } else {
+                this.progressbarTip.style.left = `${
+                    (window.scrollY /
+                        (this.getSliderWidth()/2)) *
+                    100
+                }%`;
+                console.log(this.getSliderWidth())
             }
 
             //if the timer isnt cleared, we run the function to
@@ -474,16 +495,38 @@ function getScrollPosition() {
 }
 
 function scrollUpdate() {
-    scrollPos = getScrollPosition();
-    if (clonesWidth + scrollPos >= sliderWidth) {
-        window.scrollTo({ top: 1 });
-    } else if (scrollPos <= 0) {
-        window.scrollTo({ top: sliderWidth - clonesWidth - 1 });
+    if(!isSmallScreen){
+        scrollPos = getScrollPosition();
+        if (clonesWidth + scrollPos >= sliderWidth) {
+            window.scrollTo({ top: 1 });
+        } else if (scrollPos <= 0) {
+            window.scrollTo({ top: sliderWidth - clonesWidth - 1 });
+        }
+    
+        slider.style.transform = `translateX(${-window.scrollY}px)`;
     }
-
-    slider.style.transform = `translateX(${-window.scrollY}px)`;
+    
 
     requestAnimationFrame(scrollUpdate);
+}
+
+function toSmall() {
+    // remove all clones
+    let clones = document.getElementsByClassName("clone");
+    [...clones].forEach(item => {
+        item.hidden = true;
+    })
+    slider.style.transform = `translateX(0px)`;
+
+    document.body.style.height = `${window.innerHeight}px`;
+}
+
+function toBig() {
+    // remove all clones
+    let clones = document.getElementsByClassName("clone");
+    [...clones].forEach(item => {
+        item.hidden = false;
+    })
 }
 
 function onload() {
@@ -498,6 +541,9 @@ function onload() {
         clone.classList.add("clone");
         slider.appendChild(clone);
         clones.push(clone);
+        if(isSmallScreen) {
+            clone.hidden = true;
+        }
     });
     [...document.querySelectorAll(".imageCarouselItem")].forEach((item) => {
         item.style.width = item.dataset.originalWidth = `${
@@ -533,8 +579,9 @@ Promise.all(
         isSmallScreen = true;
     } else {
         isSmallScreen = false;
-        onload();
+        
     }
+    onload();
 });
 
 // MOUSE ACTION
