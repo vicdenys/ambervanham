@@ -55,9 +55,9 @@
 
 
     <div id="slider_wrap" class=" h-2/3  w-screen z-20 fixed  top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-        <div id="slider" @scroll.window="scrollArtworks()" @scroll="scrollArtworks()" class="noscrollbar snap-x sm:snap-none snap-mandatory w-full md:w-auto overflow-x-auto   absolute top-[15%] transform  left-0 h-[40vh] sm:h-[45vh] items-start flex ">
+        <div id="slider" @scroll.window="scrollArtworks()" @scroll="scrollArtworks()" class="noscrollbar snap-x sm:snap-none snap-mandatory w-full md:w-auto overflow-x-auto overflow-y-hidden   absolute top-[15%] transform  left-0 h-[40vh] sm:h-[45vh] items-start flex ">
             @foreach($artworks as $artwork)
-            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem {{$artwork->getCategoriesString()}} noscrollbar snap-center shrink-0 self-start  px-8 h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[5vh] transform overflow-hidden origin-center">
+            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem  {{$artwork->getCategoriesString()}} noscrollbar snap-center shrink-0 self-start  px-8 h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[5vh] transform overflow-hidden origin-center">
                 <div id="artworkTitle-{{$artwork->id}}-wrapper" class="absolute  top-20 left-1/2 transform -translate-x-1/2 overflow-hidden">
                     <p id="artworkTitle-{{$artwork->id}}" class=" text-sm block relative font-sans py-1">
 
