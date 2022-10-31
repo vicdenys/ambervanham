@@ -15,7 +15,6 @@ window.Alpine = Alpine;
 let isSmallScreen = false;
 
 window.addEventListener("resize", (event) => {
-
     // RESET SLIDER
     [...document.querySelectorAll(".imageCarouselItem")].forEach(
         (item, index) => {
@@ -66,6 +65,9 @@ document.addEventListener("alpine:init", () => {
         artworkTitleAnimation: {},
         scrollTime: -1,
         isScrolling: false,
+        progressbarTip: document.getElementById("progressbarTip"),
+        slider: document.getElementById("slider"),
+        sliderWidth: 0,
         openDetail: false,
         detailTimeline: null,
         artworkTitle: "This is a artwork title",
@@ -81,6 +83,14 @@ document.addEventListener("alpine:init", () => {
             "category 1",
         ],
         artworkDetailId: 0,
+
+        getSliderWidth() {
+            let sliderwidth = 0;
+            [...this.slider.children].forEach((item) => {
+                sliderwidth += item.getBoundingClientRect().width;
+            });
+            return sliderwidth;
+        },
 
         toggleCategory(category) {
             this.categoriesOpen = false;
@@ -161,6 +171,14 @@ document.addEventListener("alpine:init", () => {
             //while we are scrolling, restart the timer
             if (this.scrollTimer != -1) {
                 clearTimeout(this.scrollTimer);
+            }
+
+            if (isSmallScreen) {
+                this.progressbarTip.style.left = `${
+                    (this.slider.scrollLeft / (this.getSliderWidth()-this.slider.offsetWidth)) * 100
+                }%`;
+
+            } else {
             }
 
             //if the timer isnt cleared, we run the function to
@@ -258,10 +276,10 @@ document.addEventListener("alpine:init", () => {
                 this.artworkCategories =
                     image.dataset.artworkCategories.split("-");
                 this.artworkCategories.forEach((item, index) => {
-                    if (item == ''){
-                        this.artworkCategories = []
+                    if (item == "") {
+                        this.artworkCategories = [];
                     }
-                })
+                });
 
                 let clone = document
                     .getElementById("artworkImage-" + artwork)
@@ -465,10 +483,6 @@ function scrollUpdate() {
 
     slider.style.transform = `translateX(${-window.scrollY}px)`;
 
-    progressbarTip.style.left = `${
-        (window.scrollY / (sliderWidth / 2)) * 100
-    }%`;
-
     requestAnimationFrame(scrollUpdate);
 }
 
@@ -515,7 +529,6 @@ Promise.all(
                 })
         )
 ).then(() => {
-    console.log(window.screen.width);
     if (window.screen.width < 768) {
         isSmallScreen = true;
     } else {

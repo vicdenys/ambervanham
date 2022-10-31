@@ -5,7 +5,7 @@
     <div id="progressbard" class=" fixed bottom-24  md:top-6 h-px w-56 md:w-96 left-1/2 -translate-x-1/2  py-2 ">
         <div id="progressbarLine" class="absolute bg-black w-full scale-x-0 h-[2px] top-1/2 left-0 -translate-y-1/2 transfrom"></div>
         <div id="progressbarBorder" class="absolute w-[calc(100%+0.5rem)] top-0 left-1/2 -translate-x-1/2 scale-y-0 transform h-full border-x-2 border-black"></div>
-        <div id="progressbarTip" class="absolute rounded-full w-2 scale-0 h-2 bg-black left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div id="progressbarTip" class="absolute rounded-full w-2 scale-0 h-2 bg-black left-1/2 top-1/2 transform sm:-translate-x-1/2 -translate-y-1/2"></div>
     </div>
 
     <div class="fixed z-40 right-4 md:right-8 top-[1.4rem]  " :class='categoriesOpen ?  "" : "group"'>
@@ -54,8 +54,8 @@
     </div>
 
 
-    <div id="slider_wrap" class=" h-2/3  w-screen z-20 fixed overflow-x-auto top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-        <div id="slider" @scroll.window="scrollArtworks()" class="noscrollbar snap-x snap-mandatory w-full overflow-x-auto  absolute top-[15%] transform  left-0 h-[40vh] sm:h-[45vh] items-start flex ">
+    <div id="slider_wrap" class=" h-2/3  w-screen z-20 fixed  top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+        <div id="slider" @scroll.window="scrollArtworks()" @scroll="scrollArtworks()" class="noscrollbar snap-x sm:snap-none snap-mandatory w-full md:w-auto overflow-x-auto   absolute top-[15%] transform  left-0 h-[40vh] sm:h-[45vh] items-start flex ">
             @foreach($artworks as $artwork)
             <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem {{$artwork->getCategoriesString()}} snap-center shrink-0 self-start  px-8 h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[5vh] transform overflow-hidden origin-center">
                 <div id="artworkTitle-{{$artwork->id}}-wrapper" class="absolute  top-20 left-1/2 transform -translate-x-1/2 overflow-hidden">
