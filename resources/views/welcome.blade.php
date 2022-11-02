@@ -9,7 +9,7 @@
     </div>
 
     <div class="fixed z-40 right-4 md:right-8 top-[1.4rem]  " :class='categoriesOpen ?  "" : "group"'>
-        <p @click='categoriesOpen = !categoriesOpen' class="text-right block mb-4 uppercase text-sm right-0">Categories</p>
+        <p @click='categoriesOpen = !categoriesOpen' class="text-right block mb-4 uppercase text-sm right-0">Filter works</p>
         <div class="flex gap-2 max-w-[25rem] justify-end text-lg items-center flex-wrap">
 
             @foreach($categories as $category)
@@ -54,18 +54,18 @@
     </div>
 
 
-    <div id="slider_wrap" class=" h-2/3  w-screen z-20 fixed  top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-        <div id="slider" @scroll.window="scrollArtworks()" @scroll="scrollArtworks()" class="noscrollbar snap-x sm:snap-none snap-mandatory w-full md:w-auto overflow-x-auto overflow-y-hidden   absolute top-[15%] transform  left-0 h-[40vh] sm:h-[45vh] items-start flex ">
+    <div id="slider_wrap" class=" h-full w-screen z-20 fixed  top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+        <div id="slider" @scroll.window="scrollArtworks()" @scroll="scrollArtworks()" class="noscrollbar h-full  py-[25vh] snap-x sm:snap-none snap-mandatory w-full md:w-auto overflow-x-auto overflow-y-hidden  absolute  transform  left-0  items-start flex ">
             @foreach($artworks as $artwork)
-            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem  {{$artwork->getCategoriesString()}} noscrollbar snap-center shrink-0 self-start  px-8 h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[5vh] transform overflow-hidden origin-center">
-                <div id="artworkTitle-{{$artwork->id}}-wrapper" class="absolute  top-20 left-1/2 transform -translate-x-1/2 overflow-hidden">
-                    <p id="artworkTitle-{{$artwork->id}}" class=" text-sm block relative font-sans py-1">
+            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem relative {{$artwork->getCategoriesString()}} noscrollbar snap-center overflow-hidden shrink-0 self-start  px-8 h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[8vh] transform origin-center">
+                <div id="artworkTitle-{{$artwork->id}}-wrapper" class="absolute hidden md:block top-4 left-1/2 transform -translate-x-1/2">
+                    <p id="artworkTitle-{{$artwork->id}}" class=" text-sm block relative whitespace-nowrap font-sans py-1">
 
-                        @foreach(str_split($artwork->title) as $letter)<span class='letter inline-block transform -translate-y-[100px] relative  text-center  uppercase'>{!! $letter == ' ' ? str_replace(' ', '&nbsp;', $letter) : $letter !!}</span>@endforeach
+                        @foreach(str_split($artwork->title) as $letter)<span class='letter inline-block transform opacity-0 -translate-y-[100px] relative  text-center  uppercase'>{!! $letter == ' ' ? str_replace(' ', '&nbsp;', $letter) : $letter !!}</span>@endforeach
 
                     </p>
                 </div>
-                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all shrink-0 group-hover:md:shadow-xl shadow-black/20 shadow-md  overflow-hidden left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full  bg-white" src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="">
+                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0 group-hover:md:shadow-xl shadow-black/20 shadow-md  left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full  bg-white" src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="">
 
             </div>
             @endforeach

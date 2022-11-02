@@ -29,25 +29,27 @@ window.addEventListener("resize", (event) => {
     if (isSmallScreen) {
     } else {
         // RESET SLIDER
-        [...document.querySelectorAll(".imageCarouselItem")].forEach(
-            (item, index) => {
-                item.style.width = item.dataset.originalWidth = `${
-                    [...document.querySelectorAll(".imageCarouselImages")][
-                        index
-                    ].getBoundingClientRect().width +
-                    parseInt(
-                        window
-                            .getComputedStyle(item, null)
-                            .getPropertyValue("padding-left")
-                    ) +
-                    parseInt(
-                        window
-                            .getComputedStyle(item, null)
-                            .getPropertyValue("padding-right")
-                    )
-                }px`;
-            }
-        );
+        // [...document.querySelectorAll(".imageCarouselItem")].forEach(
+            
+        //     (item, index) => {
+                
+        //         item.style.width = item.dataset.originalWidth = `${
+        //             [...document.querySelectorAll(".imageCarouselImages")][
+        //                 index
+        //             ].getBoundingClientRect().width +
+        //             parseInt(
+        //                 window
+        //                     .getComputedStyle(item, null)
+        //                     .getPropertyValue("padding-left")
+        //             ) +
+        //             parseInt(
+        //                 window
+        //                     .getComputedStyle(item, null)
+        //                     .getPropertyValue("padding-right")
+        //             )
+        //         }px`;
+        //     }
+        // );
 
         calculateDimensions();
         document.body.style.height = `${sliderWidth}px`;
@@ -392,7 +394,7 @@ document.addEventListener("alpine:init", () => {
                         opacity: 1,
                         duration: 0.2,
                         ease: Power2.easeOut,
-                        stagger: 0.05,
+                        stagger: 0.02,
                     }
                 );
         },
