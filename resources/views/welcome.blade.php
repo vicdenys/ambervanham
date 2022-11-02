@@ -25,7 +25,7 @@
 
     </div>
 
-    <div id="artworkDetail" class="fixed z-50 gap-12   w-screen h-screen overflow-y-scroll top-0 left-0" :class="openDetail ? 'block' : 'hidden'">
+    <div id="artworkDetail" class="fixed z-50 gap-12   w-screen h-full overflow-y-scroll top-0 left-0" :class="openDetail ? 'block' : 'hidden'">
         <p class="text-center relative z-50 mt-12" @click="imageClicked()">
             x close
         </p>

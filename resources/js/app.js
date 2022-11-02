@@ -22,11 +22,11 @@ window.addEventListener("resize", (event) => {
     } else if (window.innerWidth >= 768 && isSmallScreen) {
         // first time big screen
         isSmallScreen = false;
-        toBig()
+        toBig();
     }
+    documentHeight();
 
     if (isSmallScreen) {
-
     } else {
         // RESET SLIDER
         [...document.querySelectorAll(".imageCarouselItem")].forEach(
@@ -192,12 +192,9 @@ document.addEventListener("alpine:init", () => {
                         (this.getSliderWidth() - this.slider.offsetWidth)) *
                     100
                 }%`;
-                
             } else {
                 this.progressbarTip.style.left = `${
-                    (window.scrollY /
-                        (this.getSliderWidth()/2)) *
-                    100
+                    (window.scrollY / (this.getSliderWidth() / 2)) * 100
                 }%`;
             }
 
@@ -321,7 +318,8 @@ document.addEventListener("alpine:init", () => {
                 clone.dataset.imageRatio = imageRatio;
 
                 let newImageWidth =
-                    imagewrapper.getBoundingClientRect().width - convertRemToPixels(3);
+                    imagewrapper.getBoundingClientRect().width -
+                    convertRemToPixels(3);
 
                 let imageSetWidth = !isSmallScreen ? "66%" : "100%";
 
@@ -489,17 +487,16 @@ function getScrollPosition() {
 }
 
 function scrollUpdate() {
-    if(!isSmallScreen){
+    if (!isSmallScreen) {
         scrollPos = getScrollPosition();
         if (clonesWidth + scrollPos >= sliderWidth) {
             window.scrollTo({ top: 1 });
         } else if (scrollPos <= 0) {
             window.scrollTo({ top: sliderWidth - clonesWidth - 1 });
         }
-    
+
         slider.style.transform = `translateX(${-window.scrollY}px)`;
     }
-    
 
     requestAnimationFrame(scrollUpdate);
 }
@@ -507,9 +504,9 @@ function scrollUpdate() {
 function toSmall() {
     // remove all clones
     let clones = document.getElementsByClassName("clone");
-    [...clones].forEach(item => {
+    [...clones].forEach((item) => {
         item.hidden = true;
-    })
+    });
     slider.style.transform = `translateX(0px)`;
 
     document.body.style.height = `${window.innerHeight}px`;
@@ -518,9 +515,9 @@ function toSmall() {
 function toBig() {
     // remove all clones
     let clones = document.getElementsByClassName("clone");
-    [...clones].forEach(item => {
+    [...clones].forEach((item) => {
         item.hidden = false;
-    })
+    });
 }
 
 function onload() {
@@ -535,7 +532,7 @@ function onload() {
         clone.classList.add("clone");
         slider.appendChild(clone);
         clones.push(clone);
-        if(isSmallScreen) {
+        if (isSmallScreen) {
             clone.hidden = true;
         }
     });
@@ -569,17 +566,20 @@ Promise.all(
                 })
         )
 ).then(() => {
+    documentHeight();
 
-    console.log(window.innerWidth)
     if (window.innerWidth < 768) {
         isSmallScreen = true;
     } else {
         isSmallScreen = false;
-        
     }
     onload();
 });
 
+const documentHeight = () => {
+    const doc = document.documentElement;
+    doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
+};
 // MOUSE ACTION
 
 // get all links

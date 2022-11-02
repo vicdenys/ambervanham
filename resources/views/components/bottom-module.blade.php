@@ -6,7 +6,7 @@ $class = '';
 
 @endphp
 <div class="w-1/3 relative float-left top-full {{$class}}" class="" x-data="{open: false}" :class='open ?  "z-50" : "z-30"'>
-  <div class="fixed bg-white md:hidden w-screen h-screen top-0 left-0 duration-200 transition-opacity" :class='open ?  "block opacity-100" : " hidden opacity-0"'></div>
+  <div class="fixed bg-white md:hidden w-screen h-full top-0 left-0 duration-200 transition-opacity" :class='open ?  "block opacity-100" : " hidden opacity-0"'></div>
   <div class="fixed md:hidden w-screen  top-4 right-4 text-right duration-200 transition-opacity" :class='open ?  "block opacity-100" : " hidden opacity-0"'> x close</div>
 
   <div @click.away="open=false">
