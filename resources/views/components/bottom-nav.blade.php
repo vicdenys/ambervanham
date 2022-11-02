@@ -3,10 +3,14 @@
   <x-bottom-module :title="'About'" :slotClass="'-left-0'">
     <p class=" p-4 sm:p-8 ">
       <span>
-        Amber van Ham (1996) is een Antwerpse kunstenares die het liefst werkt vanuit het wazige spanningsveld van objectieve ervaringen en de subjectieve waarden die eraan toegekend worden. Het dagelijks leven is haar favoriete thema omdat er een enorme gelaagdheid schuilt in de schijnbare simpliciteit ervan.
+        Amber van Ham (1996) is een Antwerpse kunstenares die het liefst werkt vanuit het wazige spanningsveld van objectieve ervaringen en de subjectieve waarden die eraan toegekend worden.
+        <br>
+        <br>
+         Het dagelijks leven is haar favoriete thema omdat er een enorme gelaagdheid schuilt in de schijnbare simpliciteit ervan.
         Deze verwerkt ze in haar zwart/wit tekeningen.
+        <br>
       </span>
-      <span class="mt-4 inline-block">
+      <span class="mt-8 inline-block">
         <img src="./img/amber-profile.png" alt="profile picture amber van ham">
       </span>
 
