@@ -3,29 +3,13 @@
   <x-bottom-module :title="'About'" :slotClass="'-left-0'">
     <p class=" p-4 sm:p-8 ">
       <span>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-
+        Amber van Ham (1996) is een Antwerpse kunstenares die het liefst werkt vanuit het wazige spanningsveld van objectieve ervaringen en de subjectieve waarden die eraan toegekend worden. Het dagelijks leven is haar favoriete thema omdat er een enorme gelaagdheid schuilt in de schijnbare simpliciteit ervan.
+        Deze verwerkt ze in haar zwart/wit tekeningen.
       </span>
       <span class="mt-4 inline-block">
         <img src="./img/amber-profile.png" alt="profile picture amber van ham">
       </span>
-      <span class="mt-4 inline-block">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
 
-      </span>
-      <span class="mt-4 inline-block">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-
-      </span>
-      <span class="mt-4 inline-block">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-      </span>
-      <span class="mt-4 inline-block">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-      </span>
-      <span class="mt-4 inline-block">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. A omnis optio amet aliquid vel ad illo distinctio voluptatem itaque dolorem, sed quasi, magni debitis nam repellendus eius excepturi natus! Illum?
-      </span>
     </p>
   </x-bottom-module>
   <x-bottom-module :title="'Exhibitions'" :class="'-ml-[2px] -mr-[2px] w-[calc(33.33%+4px)] '" :slotClass="'-left-[calc(100%-2px)]'">
