@@ -15,11 +15,11 @@ window.Alpine = Alpine;
 let isSmallScreen = false;
 
 window.addEventListener("resize", (event) => {
-    if (window.screen.width < 768 && !isSmallScreen) {
+    if (window.innerWidth < 768 && !isSmallScreen) {
         // first time small screen
         isSmallScreen = true;
         toSmall();
-    } else if (window.screen.width >= 768 && isSmallScreen) {
+    } else if (window.innerWidth >= 768 && isSmallScreen) {
         // first time big screen
         isSmallScreen = false;
         toBig()
@@ -186,20 +186,19 @@ document.addEventListener("alpine:init", () => {
             if (this.scrollTimer != -1) {
                 clearTimeout(this.scrollTimer);
             }
-
             if (isSmallScreen) {
                 this.progressbarTip.style.left = `${
                     (this.slider.scrollLeft /
                         (this.getSliderWidth() - this.slider.offsetWidth)) *
                     100
                 }%`;
+                
             } else {
                 this.progressbarTip.style.left = `${
                     (window.scrollY /
                         (this.getSliderWidth()/2)) *
                     100
                 }%`;
-                console.log(this.getSliderWidth())
             }
 
             //if the timer isnt cleared, we run the function to
@@ -322,12 +321,7 @@ document.addEventListener("alpine:init", () => {
                 clone.dataset.imageRatio = imageRatio;
 
                 let newImageWidth =
-                    imagewrapper.getBoundingClientRect().width -
-                    parseInt(
-                        window
-                            .getComputedStyle(clone, null)
-                            .getPropertyValue("padding-left")
-                    );
+                    imagewrapper.getBoundingClientRect().width - convertRemToPixels(3);
 
                 let imageSetWidth = !isSmallScreen ? "66%" : "100%";
 
@@ -575,7 +569,9 @@ Promise.all(
                 })
         )
 ).then(() => {
-    if (window.screen.width < 768) {
+
+    console.log(window.innerWidth)
+    if (window.innerWidth < 768) {
         isSmallScreen = true;
     } else {
         isSmallScreen = false;
