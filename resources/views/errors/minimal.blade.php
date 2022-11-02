@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class=" px-8  relative text-white z-40 mx-auto items-center text-center justify-center text-[1.5rem] flex w-screen h-screen ">
+<div class=" px-8  relative text-black z-40 mx-auto items-center text-center justify-center text-[1.5rem] flex w-screen h-screen ">
     <div>
         <div class="text-3xl font-victorianna-thin  tracking-wider">
             @yield('code')
