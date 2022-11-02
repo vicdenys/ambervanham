@@ -579,6 +579,7 @@ Promise.all(
 const documentHeight = () => {
     const doc = document.documentElement;
     doc.style.setProperty("--doc-height", `${window.innerHeight}px`);
+    doc.style.setProperty("--doc-height-neg", `-${window.innerHeight}px`);
 };
 // MOUSE ACTION
 
