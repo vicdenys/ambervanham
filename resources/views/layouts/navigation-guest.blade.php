@@ -1,4 +1,4 @@
-<nav id="navigation" class="fixed z-40 ">
+<nav id="navigation" class="fixed z-[45] ">
 
 
     <ul class="w-full  py-2 px-4 md:px-8 flex items-center justify-between">

@@ -1,4 +1,4 @@
-<div class="fixed z-40 top-full w-[calc(100vw+6px)] -ml-[2px]  content-end items-end">
+<div class="fixed z-50 top-full w-[calc(100vw+6px)] -ml-[2px]  content-end items-end">
 
   <x-bottom-module :title="'About'" :slotClass="'-left-0'">
     <p class=" p-4 sm:p-8 ">
