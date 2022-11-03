@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="brunch & aperitif restaurant! located in the hippest neighborhood of Antwerp, the south part!" />
-
+    <meta name="description" content="Amber van Ham (1996) is an artist based in Antwerp who tries to grasp the blurry field of tension, objective experiences and the subjective values which derive from it." />
 
     <title>
         Amber van Ham 
