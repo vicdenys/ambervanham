@@ -40,7 +40,7 @@
                     </template>
                 </div>
                 <div class="mt-4 slideUp opacity-0">
-                    <p id="artworkDetailDescription" x-text="artworkDescription" class="whitespace-pre-line">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, tempora aspernatur. Tempora quo quia laborum officiis.</p>
+                    <p id="artworkDetailDescription" x-text="artworkDescription" class="whitespace-pre-line">Example Description of a artwork. 300x20. Pencil on paper</p>
 
 
                 </div>
@@ -65,7 +65,7 @@
 
                     </p>
                 </div>
-                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0 group-hover:md:shadow-xl shadow-black/20 shadow-md  left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full  bg-white" src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="">
+                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0 group-hover:md:shadow-xl shadow-black/20 shadow-md  left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full  bg-white" src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="artwork with title {{ $artwork->title}}">
 
             </div>
             @endforeach

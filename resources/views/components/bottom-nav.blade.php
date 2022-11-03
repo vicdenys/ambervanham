@@ -18,7 +18,7 @@
   </x-bottom-module>
   <x-bottom-module :title="'Exhibitions'" :class="'-ml-[2px] -mr-[2px] w-[calc(33.33%+4px)] '" :slotClass="'-left-[calc(100%-2px)]'">
     @if(count($ongoingExhibitions))
-    <h3 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Ongoing <span class="italic">Events</span> </h3>
+    <h2 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Ongoing <span class="italic">Events</span> </h2>
     @foreach($ongoingExhibitions as $exhibition)
     <div class="exhibitionListItem border-b-2 py-8 px-8 border-gray-500 " x-data="{openExhibit : false}">
       <h3 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h3>
@@ -33,7 +33,7 @@
     @endforeach
     @endif
     @if(count($futureExhibitions))
-    <h3 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Future <span class="italic">Events</span></h3>
+    <h2 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Future <span class="italic">Events</span></h2>
     @foreach($futureExhibitions as $exhibition)
     <div class="exhibitionListItem border-b-2 py-8 px-8 border-gray-500 " x-data="{openExhibit : false}">
       <h3 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h3>
@@ -48,7 +48,7 @@
     @endforeach
     @endif
     @if(count($pastExhibitions))
-    <h3 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Past <span class="italic">Events</span></h3>
+    <h2 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Past <span class="italic">Events</span></h2>
     @foreach($pastExhibitions as $exhibition)
     <div class="exhibitionListItem py-8 px-8 border-b-2 border-gray-500 " x-data="{openExhibit : false}">
       <h3 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h3>
