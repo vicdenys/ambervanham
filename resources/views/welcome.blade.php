@@ -65,7 +65,7 @@
 
                     </p>
                 </div>
-                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0 group-hover:md:drop-shadow-lg shadow-black drop-shadow-md  left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full " src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="artwork with title {{ $artwork->title}}">
+                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0  left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full " src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="artwork with title {{ $artwork->title}}">
 
             </div>
             @endforeach
