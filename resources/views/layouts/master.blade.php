@@ -10,7 +10,7 @@
     <meta name="author" content="Vic Denys">
 
     <title>
-        Amber van Ham - 
+        Amber van Ham 
     </title>
 
     <x-favicon></x-favicon>

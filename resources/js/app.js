@@ -29,27 +29,27 @@ window.addEventListener("resize", (event) => {
     if (isSmallScreen) {
     } else {
         // RESET SLIDER
-        // [...document.querySelectorAll(".imageCarouselItem")].forEach(
+        [...document.querySelectorAll(".imageCarouselItem")].forEach(
             
-        //     (item, index) => {
+            (item, index) => {
                 
-        //         item.style.width = item.dataset.originalWidth = `${
-        //             [...document.querySelectorAll(".imageCarouselImages")][
-        //                 index
-        //             ].getBoundingClientRect().width +
-        //             parseInt(
-        //                 window
-        //                     .getComputedStyle(item, null)
-        //                     .getPropertyValue("padding-left")
-        //             ) +
-        //             parseInt(
-        //                 window
-        //                     .getComputedStyle(item, null)
-        //                     .getPropertyValue("padding-right")
-        //             )
-        //         }px`;
-        //     }
-        // );
+                item.style.width = item.dataset.originalWidth = `${
+                    [...document.querySelectorAll(".imageCarouselImages")][
+                        index
+                    ].getBoundingClientRect().width +
+                    parseInt(
+                        window
+                            .getComputedStyle(item, null)
+                            .getPropertyValue("padding-left")
+                    ) +
+                    parseInt(
+                        window
+                            .getComputedStyle(item, null)
+                            .getPropertyValue("padding-right")
+                    )
+                }px`;
+            }
+        );
 
         calculateDimensions();
         document.body.style.height = `${sliderWidth}px`;
@@ -560,11 +560,12 @@ function calculateDimensions(width) {
 window.addEventListener("load", (event) => {});
 Promise.all(
     Array.from(document.images)
-        .filter((img) => !img.complete)
         .map(
             (img) =>
                 new Promise((resolve) => {
                     img.onload = img.onerror = resolve;
+                    console.log(img);
+                    
                 })
         )
 ).then(() => {
