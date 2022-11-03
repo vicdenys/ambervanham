@@ -560,11 +560,12 @@ function calculateDimensions(width) {
 window.addEventListener("load", (event) => {});
 Promise.all(
     Array.from(document.images)
+        .filter((img) => !img.complete)
         .map(
             (img) =>
                 new Promise((resolve) => {
                     img.onload = img.onerror = resolve;
-                    console.log(img);
+                    
                     
                 })
         )
