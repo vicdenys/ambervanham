@@ -7,13 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Amber van Ham is an Antwerp based artist who tries to grasp the blurry field of tension, objective experiences and the subjective values which derive from it." />
     <meta name="keywords" content="artist, Antwerp, drawing, pencil, pencildrawing, art, belgian art, black and white, pencil on paper">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="Vic Denys">
 
     <title>
-        Amber van Ham
-        @isset($title)
-        {{ $title }}
-        @endisset
+        Amber van Ham - 
     </title>
 
     <x-favicon></x-favicon>
