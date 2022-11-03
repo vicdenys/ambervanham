@@ -18,10 +18,10 @@
   </x-bottom-module>
   <x-bottom-module :title="'Exhibitions'" :class="'-ml-[2px] -mr-[2px] w-[calc(33.33%+4px)] '" :slotClass="'-left-[calc(100%-2px)]'">
     @if(count($ongoingExhibitions))
-    <h1 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Ongoing <span class="italic">Events</span> </h1>
+    <h3 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Ongoing <span class="italic">Events</span> </h3>
     @foreach($ongoingExhibitions as $exhibition)
     <div class="exhibitionListItem border-b-2 py-8 px-8 border-gray-500 " x-data="{openExhibit : false}">
-      <h1 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h1>
+      <h3 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h3>
       <p class="text-gray-500">{{ $exhibition->address }}</p>
       <p class="mt-4">{{date('d.m.Y', strtotime($exhibition->start_date)) }} - {{ date('d.m.Y', strtotime($exhibition->end_date)) }}</p>
       <p class="mt-4" :class="openExhibit ? 'block' : 'hidden'">
@@ -33,10 +33,10 @@
     @endforeach
     @endif
     @if(count($futureExhibitions))
-    <h1 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Future <span class="italic">Events</span></h1>
+    <h3 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Future <span class="italic">Events</span></h3>
     @foreach($futureExhibitions as $exhibition)
     <div class="exhibitionListItem border-b-2 py-8 px-8 border-gray-500 " x-data="{openExhibit : false}">
-      <h1 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h1>
+      <h3 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h3>
       <p class="text-gray-500">{{ $exhibition->address }}</p>
       <p class="mt-4">{{date('d.m.Y', strtotime($exhibition->start_date)) }} - {{ date('d.m.Y', strtotime($exhibition->end_date)) }}</p>
       <p class="mt-4" :class="openExhibit ? 'block' : 'hidden'">
@@ -48,10 +48,10 @@
     @endforeach
     @endif
     @if(count($pastExhibitions))
-    <h1 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Past <span class="italic">Events</span></h1>
+    <h3 class=" px-8 border-b-2 border-black py-4 font-serif text-xl">Past <span class="italic">Events</span></h3>
     @foreach($pastExhibitions as $exhibition)
     <div class="exhibitionListItem py-8 px-8 border-b-2 border-gray-500 " x-data="{openExhibit : false}">
-      <h1 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h1>
+      <h3 class="text-xl capitalize font-serif"> {{ $exhibition->title }}</h3>
       <p class="text-gray-500">{{ $exhibition->address }}</p>
       <p class="mt-4">{{date('d.m.Y', strtotime($exhibition->start_date)) }} - {{ date('d.m.Y', strtotime($exhibition->end_date)) }}</p>
       <p class="mt-4" :class="openExhibit ? 'block' : 'hidden'">

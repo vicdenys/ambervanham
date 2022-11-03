@@ -31,9 +31,9 @@
         </p>
         <div class="flex flex-wrap z-50 max-w-6xl  absolute w-full relaltive " id="artworkDetailTextWrapper">
             <div class="w-full  px-12 py-8"  >
-                <h1 class="slideUp opacity-0 text-3xl" id="artworkDetailtitle" x-text="artworkTitle">
+                <h2 class="slideUp opacity-0 text-3xl" id="artworkDetailtitle" x-text="artworkTitle">
                     Dit is een titel van een artwork
-                </h1>
+                </h2>
                 <div class=" gap-2 mt-4" id="artworkDetailCategories">
                     <template x-for="category in artworkCategories">
                         <p class="bg-black  slideUp opacity-0 mr-2 mb-2 text-white px-2 py-1 inline-block uppercase text-xs" x-text='category'></p>

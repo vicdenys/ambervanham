@@ -12,11 +12,11 @@ $class = '';
   <div @click.away="open=false">
     <div class=" relative group max-h-[calc(var(--doc-height)+6px)] bg-white border-x-2 border-t-2 border-black transition transform" :class='open ?  "translate-y-[calc(-100%-4px)]" : " -translate-y-[3.5rem] "'>
       <div data-hover @click='open = !open' class="overflow-hidden py-4  max-w-full relative w-full px-4 md:px-8">
-        <h1 class=" inline font-sans uppercase  text-sm sm:text-base  relative whitespace-nowrap pointer-events-none">
+        <h2 class=" inline font-sans uppercase  text-sm sm:text-base  relative whitespace-nowrap pointer-events-none">
           <span class="italic  hidden" :class="open ? '' : 'animate-text-loop group-hover:md:inline-block hidden'">{{str_repeat($title . ' ', 10) }}</span>
           <span class="" :class="open ? '' :'group-hover:md:hidden inline'">{{ $title }}</span>
           <span class="italic   hidden" :class="open ? '' : 'animate-text-loop group-hover:md:inline-block hidden'">{{str_repeat($title . ' ', 10) }}</span>
-        </h1>
+        </h2>
 
       </div>
 
