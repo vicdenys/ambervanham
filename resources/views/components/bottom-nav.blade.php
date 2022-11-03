@@ -3,18 +3,24 @@
   <x-bottom-module :title="'About'" :slotClass="'-left-0'">
     <p class=" p-4 sm:p-8 ">
       <span>
-        Amber van Ham (1996) is een Antwerpse kunstenares die het liefst werkt vanuit het wazige spanningsveld van objectieve ervaringen en de subjectieve waarden die eraan toegekend worden.
+        Amber van Ham (1996) is an Antwerp based artist. Most of her works are about the indistinctive tension field of objective experiences and their subjective values we assign to them. <br>
         <br>
-        <br>
-         Het dagelijks leven is haar favoriete thema omdat er een enorme gelaagdheid schuilt in de schijnbare simpliciteit ervan.
-        Deze verwerkt ze in haar zwart/wit tekeningen.
+        Everyday life is her favorite theme because there is an enormous stratification in its apparent simplicity. She incorporates these into her black and white drawings.
         <br>
       </span>
-      <span class="mt-8 inline-block">
-        <img src="./img/amber-profile.png" alt="profile picture amber van ham">
-      </span>
-
     </p>
+    <p class=" inline-block px-4 sm:px-8">
+      <img src="./img/amber-profile.png" alt="profile picture amber van ham">
+    </p>
+    <h2 class="mt-8 px-4 sm:px-8 font-serif text-xl">Past residence: </h2>
+    <p class="px-4 sm:px-8 ">Gast by Fameus,</p>
+    <p class="text-gray-500 px-4 sm:px-8 ">Library Permeke Antwerp, De Coninckplein 36, 2060 Antwerp.</p>
+    <p class="px-4 sm:px-8 ">31.03.2022 – 16.05.2022</p>
+    <p class="mt-8 px-4 sm:px-8 font-serif text-xl">Collective:</p>
+    <p class="px-4 sm:px-8 ">
+      Currently active at collective Frappand. With other artists Anke Reilo, Caresse Goossens and Ellen Claes.
+    </p>
+    <a data-hover target="_blank" class=" px-4 sm:px-8  mb-8 inline-block font-sans uppercase cursor-none  sm:text-base" href="https://www.instagram.com/frap.pand/">instagram frap.pand</a>
   </x-bottom-module>
   <x-bottom-module :title="'Exhibitions'" :class="'-ml-[2px] -mr-[2px] w-[calc(33.33%+4px)] '" :slotClass="'-left-[calc(100%-2px)]'">
     @if(count($ongoingExhibitions))
