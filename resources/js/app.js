@@ -593,7 +593,7 @@ let imageCounter = 0;
                 isSmallScreen = false;
             }
 
-            //document.getElementById('loaderScreen').style.display = 'none';
+            document.getElementById('loaderScreen').style.display = 'none';
             onload();
 
             
