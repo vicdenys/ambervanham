@@ -57,7 +57,7 @@
     <div id="slider_wrap" class=" h-full w-screen z-20 fixed  top-[calc(50vh-2rem)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         <div id="slider" @scroll.window="scrollArtworks()" @scroll="scrollArtworks()" class="noscrollbar h-full  py-[25vh] snap-x sm:snap-none snap-mandatory w-full md:w-auto overflow-x-auto overflow-y-hidden  absolute  transform  left-0  items-start flex ">
             @foreach($artworks as $artwork)
-            <div @click="imageClicked({{$artwork->id}})" class="imageCarouselItem relative {{$artwork->getCategoriesString()}} noscrollbar snap-center overflow-hidden shrink-0 self-start  px-8 h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[8vh] transform origin-center">
+            <div id="imageCarouselItem-{{$artwork->id}}" @click="imageClicked({{$artwork->id}})" class="imageCarouselItem relative {{$artwork->getCategoriesString()}} noscrollbar snap-center overflow-hidden shrink-0 self-start   h-full group  hover:md:scale-110  scale-100 transition-transform duration-500 py-[8vh] transform origin-center">
                 <div id="artworkTitle-{{$artwork->id}}-wrapper" class="absolute hidden md:block top-4 left-1/2 transform -translate-x-1/2">
                     <p id="artworkTitle-{{$artwork->id}}" class=" text-sm block relative whitespace-nowrap font-sans py-1">
 
@@ -65,7 +65,7 @@
 
                     </p>
                 </div>
-                <img id="artworkImage-{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0  left-1/2 transform -translate-x-1/2    origin-center  w-auto max-w-none h-full " src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="artwork with title {{ $artwork->title}}">
+                <img id="artworkImage-{{$artwork->id}}" data-artwork-id="{{$artwork->id}}" data-artwork-title="{!!$artwork->title!!}" data-artwork-description="{!!$artwork->description!!}" data-artwork-categories="{{ $artwork->getCategoriesString() }}" data-hover @mouseout="removeArtworkTitle('{{$artwork->id}}')" @mousemove="moveArtworkTitle('{{$artwork->id}}')" @mouseenter="changeArtworkTitle('{{$artwork->id}}')" class="imageCarouselImages relative rounded-sm duration-500 transition-all  shrink-0  left-1/2 transform -translate-x-1/2  origin-center  w-auto max-h-full max-w-none h-full " data-img-src="{{ $artwork->image ? '/artwork-files/' . $artwork->image : 'img/default.jpeg' }}" alt="artwork with title {{ $artwork->title}}">
 
             </div>
             @endforeach

@@ -30,9 +30,7 @@ window.addEventListener("resize", (event) => {
     } else {
         // RESET SLIDER
         [...document.querySelectorAll(".imageCarouselItem")].forEach(
-            
             (item, index) => {
-                
                 item.style.width = item.dataset.originalWidth = `${
                     [...document.querySelectorAll(".imageCarouselImages")][
                         index
@@ -538,11 +536,6 @@ function onload() {
             clone.hidden = true;
         }
     });
-    [...document.querySelectorAll(".imageCarouselItem")].forEach((item) => {
-        item.style.width = item.dataset.originalWidth = `${
-            item.getBoundingClientRect().width
-        }px`;
-    });
 
     calculateDimensions();
     document.body.style.height = `${sliderWidth}px`;
@@ -557,27 +550,54 @@ function calculateDimensions(width) {
     clonesWidth = getClonesWidth();
 }
 
-window.addEventListener("load", (event) => {});
-Promise.all(
-    Array.from(document.images)
-        .filter((img) => !img.complete)
-        .map(
-            (img) =>
-                new Promise((resolve) => {
-                    img.onload = img.onerror = resolve;
-                    
-                    
-                })
-        )
-).then(() => {
-    documentHeight();
+//window.addEventListener("load", (event) => {});
+// Promise.all(
+//     Array.from(document.images)
+//         .filter((img) => !img.complete)
+//         .map(
+//             (img) =>
+//                 new Promise((resolve) => {
+//                     img.onload = img.onerror = function () {
+//                         console.log("test");
+//                     };
+//                     // [...document.querySelectorAll(".imageCarouselItem")].forEach((item) => {
+//                     //     item.style.width = item.dataset.originalWidth = `${
+//                     //         item.getBoundingClientRect().width
+//                     //     }px`;
+//                     // });
+//                 })
+//         )
+// ).then(() => {});
 
-    if (window.innerWidth < 768) {
-        isSmallScreen = true;
-    } else {
-        isSmallScreen = false;
-    }
-    onload();
+const imageCount = [...document.querySelectorAll(".imageCarouselImages")]
+    .length;
+let imageCounter = 0;
+
+[...document.querySelectorAll(".imageCarouselImages")].forEach((item) => {
+    item.onload = function () {
+        document.getElementById(
+            `imageCarouselItem-${item.dataset.artworkId}`
+        ).style.width = `${item.width}px`;
+        item.style.padding = '2rem';
+        imageCounter++;
+        
+
+        // on last onload start rest of page rendering
+        if (imageCounter == imageCount) {
+            console.log("start image rendering");
+            documentHeight();
+
+            if (window.innerWidth < 768) {
+                isSmallScreen = true;
+            } else {
+                isSmallScreen = false;
+            }
+            onload();
+        }
+    };
+});
+[...document.querySelectorAll(".imageCarouselImages")].forEach((item) => {
+    item.src = item.dataset.imgSrc;
 });
 
 const documentHeight = () => {
