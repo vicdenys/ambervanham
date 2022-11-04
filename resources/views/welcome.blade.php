@@ -2,6 +2,10 @@
 
 @section('content')
 <div x-data="artwork" class="h-full w-full absolute top-0 left-0">
+    <div id="loaderScreen" class="fixed z-[60] flex items-center justify-center bg-white top-0 left-0 w-full h-full">
+        <h2>Loading</h2>
+    </div>
+
     <div id="progressbard" class=" fixed bottom-24  md:top-6 h-px w-56 md:w-96 left-1/2 -translate-x-1/2  py-2 ">
         <div id="progressbarLine" class="absolute bg-black w-full scale-x-0 h-[2px] top-1/2 left-0 -translate-y-1/2 transfrom"></div>
         <div id="progressbarBorder" class="absolute w-[calc(100%+0.5rem)] top-0 left-1/2 -translate-x-1/2 scale-y-0 transform h-full border-x-2 border-black"></div>

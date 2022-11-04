@@ -592,7 +592,11 @@ let imageCounter = 0;
             } else {
                 isSmallScreen = false;
             }
+
+            document.getElementById('loaderScreen').style.display = 'none';
             onload();
+
+            
         }
     };
 });
