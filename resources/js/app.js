@@ -578,7 +578,7 @@ let imageCounter = 0;
         document.getElementById(
             `imageCarouselItem-${item.dataset.artworkId}`
         ).style.width = `${item.width}px`;
-        item.style.padding = '2rem';
+        item.style.padding = '1rem';
         imageCounter++;
         
 
@@ -593,7 +593,7 @@ let imageCounter = 0;
                 isSmallScreen = false;
             }
 
-            document.getElementById('loaderScreen').style.display = 'none';
+            //document.getElementById('loaderScreen').style.display = 'none';
             onload();
 
             
