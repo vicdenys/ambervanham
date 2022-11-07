@@ -119,7 +119,7 @@ document.addEventListener("alpine:init", () => {
                         items.forEach((item) => {
                             item.style.width = item.dataset.originalWidth;
                             
-                            item.childNodes[2].style.padding = '1rem';
+                            document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = '1rem';
                             // item.classList.add("px-8");
                         });
                     });
@@ -128,7 +128,7 @@ document.addEventListener("alpine:init", () => {
                         items.forEach((item) => {
                             if (item.classList.contains(category)) {
                                 item.style.width = 0;
-                                item.childNodes[2].style.padding = 0;
+                                document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = 0;
                                 // item.classList.remove("px-8");
                             }
                         });
@@ -147,12 +147,12 @@ document.addEventListener("alpine:init", () => {
                     cateogireAnimation(() => {
                         items.forEach((item) => {
                             item.style.width = 0;
-                            item.childNodes[2].style.padding = 0;
+                            document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = 0;
                             // item.classList.remove("px-8");
                             console.log(item.childNodes[2])
                             if (item.classList.contains(category)) {
                                 item.style.width = item.dataset.originalWidth;
-                                item.childNodes[2].style.padding = '1rem';
+                                document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = '1rem';
                                 // item.classList.add("px-8");
                             }
                         });
@@ -162,7 +162,7 @@ document.addEventListener("alpine:init", () => {
                         items.forEach((item) => {
                             if (item.classList.contains(category)) {
                                 item.style.width = item.dataset.originalWidth;
-                                item.childNodes[2].style.padding = '1rem';
+                                document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = '1rem';
                                 // item.classList.add("px-8");
                             }
                         });
