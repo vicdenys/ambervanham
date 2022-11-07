@@ -2,7 +2,7 @@ require("./bootstrap");
 
 import Alpine from "alpinejs";
 import * as THREE from "three";
-import { gsap, Power2, Back } from "gsap";
+import { gsap, Power2, Back, Elastic } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
@@ -572,15 +572,37 @@ function calculateDimensions(width) {
 const imageCount = [...document.querySelectorAll(".imageCarouselImages")]
     .length;
 let imageCounter = 0;
+let loadingimgtimeline = gsap.timeline();
+
+loadingimgtimeline
+    .to("#loadingImgWrapper", {
+        duration: 0.5,
+        opacity: 0.2,
+        scale: 1,
+    })
+    .pause();
 
 [...document.querySelectorAll(".imageCarouselImages")].forEach((item) => {
     item.onload = function () {
         document.getElementById(
             `imageCarouselItem-${item.dataset.artworkId}`
         ).style.width = `${item.width}px`;
-        item.style.padding = '1rem';
+        item.style.padding = "1rem";
         imageCounter++;
-        
+        document.getElementById("loadingPercentage").innerHTML = `${Math.round(
+            (100 / imageCount) * imageCounter
+        )}%`;
+
+        if (loadingimgtimeline.isActive) {
+            if (imageCounter % 3 == 0) {
+                document.getElementById("loadingImg").src = item.src;
+                loadingimgtimeline.restart();
+            } else if (imageCounter == 0) {
+                document.getElementById("loadingImg").src = item.src;
+                loadingimgtimeline.restart();
+            }
+            
+        }
 
         // on last onload start rest of page rendering
         if (imageCounter == imageCount) {
@@ -593,9 +615,66 @@ let imageCounter = 0;
                 isSmallScreen = false;
             }
 
-            document.getElementById('loaderScreen').style.display = 'none';
-            onload();
-
+            if (loadingimgtimeline.isActive) {
+                window.setTimeout(() => {
+                    gsap.timeline()
+                        .to("#loadingLogo", {
+                            duration: 0.3,
+                            top: "-20px",
+                            ease: Power2.easeInOut,
+                            opacity: 0,
+                        })
+                        .to(
+                            "#loadingPerc",
+                            {
+                                duration: 0.3,
+                                top: "-20px",
+                                ease: Power2.easeInOut,
+                                opacity: 0,
+                            },
+                            ">-=0.2"
+                        )
+                        .to(
+                            "#loadingImg",
+                            {
+                                duration: 0.3,
+                                scale: 0.8,
+                                ease: Power2.easeInOut,
+                                opacity: 0,
+                            },
+                            ">-=0.2"
+                        )
+                        .to(
+                            "#loaderScreen",
+                            {
+                                opacity: 0,
+                                onComplete: () => {
+                                    document.getElementById('loaderScreen').style.display = 'none';
+                                }
+                            },
+                        )
+                    onload();
+                }, 1000);
+            } else {
+                gsap.timeline()
+                    .to("#loadingLogo", {
+                        duration: 0.3,
+                        top: "-20px",
+                        ease: Power2.easeInOut,
+                        opacity: 0,
+                    })
+                    .to(
+                        "#loadingPerc",
+                        {
+                            duration: 0.3,
+                            top: "-20px",
+                            ease: Power2.easeInOut,
+                            opacity: 0,
+                        },
+                        ">-=0.2"
+                    );
+                onload();
+            }
             
         }
     };

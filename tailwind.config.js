@@ -70,12 +70,17 @@ module.exports = {
                     "0%": { transform: "translateX(0%)" },
                     "100%": { transform: "translateX(-200%)" },
                 },
+                wipe: {
+                    "0%": { height: 0 },
+                    "100%": { height: "100%" },
+                },
             },
             animation: {
                 "slide-up": "slide-up 0.5s ease-in-out 3s forwards",
                 "pop-up": "pop-up 0.3s ease-in-out forwards",
                 "text-loop": "text-loop 10s linear infinite",
                 "text-loop-2": "text-loop-2 10s linear infinite",
+                loading: "wipe 2s cubic-bezier(.2,.6,.8,.4) forwards;",
             },
         },
     },

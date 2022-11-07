@@ -3,7 +3,14 @@
 @section('content')
 <div x-data="artwork" class="h-full w-full absolute top-0 left-0">
     <div id="loaderScreen" class="fixed z-[60] flex items-center justify-center bg-white top-0 left-0 w-full h-full">
-        <h2>Loading</h2>
+        <div class="text-center">
+            <h2 id="loadingLogo" class="text-5xl relative z-50 font-serif text-black mb-4 ">Amber <span class="italic"> van Ham</span></h2>
+            <p id="loadingPerc" class="z-50 relative">Loading artworks... <span id="loadingPercentage">0%</span></p>
+            <div id="loadingImgWrapper" class=" w-44 h-auto opacity-0 scale-110 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 block  z-10">
+                <img onerror="this.style.display='none'" onload="this.style.display='block'" class="text-white" id="loadingImg" src="" alt="loadingImg">
+            </div>
+        </div>
+
     </div>
 
     <div id="progressbard" class=" fixed bottom-24  md:top-6 h-px w-56 md:w-96 left-1/2 -translate-x-1/2  py-2 ">
@@ -34,7 +41,7 @@
             x close
         </p>
         <div class="flex flex-wrap z-50 max-w-6xl  absolute w-full relaltive " id="artworkDetailTextWrapper">
-            <div class="w-full  px-12 py-8"  >
+            <div class="w-full  px-12 py-8">
                 <h2 class="slideUp opacity-0 text-3xl" id="artworkDetailtitle" x-text="artworkTitle">
                     Dit is een titel van een artwork
                 </h2>
