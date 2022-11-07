@@ -587,8 +587,12 @@ loadingimgtimeline
         document.getElementById(
             `imageCarouselItem-${item.dataset.artworkId}`
         ).style.width = `${item.width}px`;
+        document.getElementById(
+            `imageCarouselItem-${item.dataset.artworkId}`
+        ).dataset.originalWidth = `${item.width}px`;
         item.style.padding = "1rem";
         imageCounter++;
+
         document.getElementById("loadingPercentage").innerHTML = `${Math.round(
             (100 / imageCount) * imageCounter
         )}%`;
@@ -601,7 +605,6 @@ loadingimgtimeline
                 document.getElementById("loadingImg").src = item.src;
                 loadingimgtimeline.restart();
             }
-            
         }
 
         // on last onload start rest of page rendering
@@ -644,15 +647,14 @@ loadingimgtimeline
                             },
                             ">-=0.2"
                         )
-                        .to(
-                            "#loaderScreen",
-                            {
-                                opacity: 0,
-                                onComplete: () => {
-                                    document.getElementById('loaderScreen').style.display = 'none';
-                                }
+                        .to("#loaderScreen", {
+                            opacity: 0,
+                            onComplete: () => {
+                                document.getElementById(
+                                    "loaderScreen"
+                                ).style.display = "none";
                             },
-                        )
+                        });
                     onload();
                 }, 1000);
             } else {
@@ -675,7 +677,6 @@ loadingimgtimeline
                     );
                 onload();
             }
-            
         }
     };
 });
