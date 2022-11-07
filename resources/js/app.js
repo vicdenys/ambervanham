@@ -29,25 +29,25 @@ window.addEventListener("resize", (event) => {
     if (isSmallScreen) {
     } else {
         // RESET SLIDER
-        [...document.querySelectorAll(".imageCarouselItem")].forEach(
-            (item, index) => {
-                item.style.width = item.dataset.originalWidth = `${
-                    [...document.querySelectorAll(".imageCarouselImages")][
-                        index
-                    ].getBoundingClientRect().width +
-                    parseInt(
-                        window
-                            .getComputedStyle(item, null)
-                            .getPropertyValue("padding-left")
-                    ) +
-                    parseInt(
-                        window
-                            .getComputedStyle(item, null)
-                            .getPropertyValue("padding-right")
-                    )
-                }px`;
-            }
-        );
+        // [...document.querySelectorAll(".imageCarouselItem")].forEach(
+        //     (item, index) => {
+        //         item.style.width = item.dataset.originalWidth = `${
+        //             [...document.querySelectorAll(".imageCarouselImages")][
+        //                 index
+        //             ].getBoundingClientRect().width +
+        //             parseInt(
+        //                 window
+        //                     .getComputedStyle(item, null)
+        //                     .getPropertyValue("padding-left")
+        //             ) +
+        //             parseInt(
+        //                 window
+        //                     .getComputedStyle(item, null)
+        //                     .getPropertyValue("padding-right")
+        //             )
+        //         }px`;
+        //     }
+        // );
 
         calculateDimensions();
         document.body.style.height = `${sliderWidth}px`;
@@ -149,7 +149,6 @@ document.addEventListener("alpine:init", () => {
                             item.style.width = 0;
                             document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = 0;
                             // item.classList.remove("px-8");
-                            console.log(item.childNodes[2])
                             if (item.classList.contains(category)) {
                                 item.style.width = item.dataset.originalWidth;
                                 document.getElementById(`artworkImage-${item.id.split('-').pop()}`).style.padding = '1rem';
@@ -557,24 +556,6 @@ function calculateDimensions(width) {
     clonesWidth = getClonesWidth();
 }
 
-//window.addEventListener("load", (event) => {});
-// Promise.all(
-//     Array.from(document.images)
-//         .filter((img) => !img.complete)
-//         .map(
-//             (img) =>
-//                 new Promise((resolve) => {
-//                     img.onload = img.onerror = function () {
-//                         console.log("test");
-//                     };
-//                     // [...document.querySelectorAll(".imageCarouselItem")].forEach((item) => {
-//                     //     item.style.width = item.dataset.originalWidth = `${
-//                     //         item.getBoundingClientRect().width
-//                     //     }px`;
-//                     // });
-//                 })
-//         )
-// ).then(() => {});
 
 const imageCount = [...document.querySelectorAll(".imageCarouselImages")]
     .length;
@@ -616,7 +597,6 @@ loadingimgtimeline
 
         // on last onload start rest of page rendering
         if (imageCounter == imageCount) {
-            console.log("start image rendering");
             documentHeight();
 
             if (window.innerWidth < 768) {
