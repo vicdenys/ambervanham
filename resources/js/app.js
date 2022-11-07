@@ -118,7 +118,9 @@ document.addEventListener("alpine:init", () => {
                     cateogireAnimation(() => {
                         items.forEach((item) => {
                             item.style.width = item.dataset.originalWidth;
-                            item.classList.add("px-8");
+                            
+                            item.childNodes[2].style.padding = '1rem';
+                            // item.classList.add("px-8");
                         });
                     });
                 } else {
@@ -126,7 +128,8 @@ document.addEventListener("alpine:init", () => {
                         items.forEach((item) => {
                             if (item.classList.contains(category)) {
                                 item.style.width = 0;
-                                item.classList.remove("px-8");
+                                item.childNodes[2].style.padding = 0;
+                                // item.classList.remove("px-8");
                             }
                         });
                     });
@@ -144,10 +147,13 @@ document.addEventListener("alpine:init", () => {
                     cateogireAnimation(() => {
                         items.forEach((item) => {
                             item.style.width = 0;
-                            item.classList.remove("px-8");
+                            item.childNodes[2].style.padding = 0;
+                            // item.classList.remove("px-8");
+                            console.log(item.childNodes[2])
                             if (item.classList.contains(category)) {
                                 item.style.width = item.dataset.originalWidth;
-                                item.classList.add("px-8");
+                                item.childNodes[2].style.padding = '1rem';
+                                // item.classList.add("px-8");
                             }
                         });
                     });
@@ -156,7 +162,8 @@ document.addEventListener("alpine:init", () => {
                         items.forEach((item) => {
                             if (item.classList.contains(category)) {
                                 item.style.width = item.dataset.originalWidth;
-                                item.classList.add("px-8");
+                                item.childNodes[2].style.padding = '1rem';
+                                // item.classList.add("px-8");
                             }
                         });
                     });
@@ -674,7 +681,25 @@ loadingimgtimeline
                             opacity: 0,
                         },
                         ">-=0.2"
-                    );
+                    )
+                    .to(
+                        "#loadingImg",
+                        {
+                            duration: 0.3,
+                            scale: 0.8,
+                            ease: Power2.easeInOut,
+                            opacity: 0,
+                        },
+                        ">-=0.2"
+                    )
+                    .to("#loaderScreen", {
+                        opacity: 0,
+                        onComplete: () => {
+                            document.getElementById(
+                                "loaderScreen"
+                            ).style.display = "none";
+                        },
+                    });
                 onload();
             }
         }
